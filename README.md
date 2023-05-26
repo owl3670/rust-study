@@ -20,3 +20,18 @@ Compile 수행
 ```sh
 rustc ./main.rs
 ```
+
+## Hello Cargo
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/hello_cargo/
+```
+
+Cargo run 실행
+
+
+```sh
+cargo run
+```
