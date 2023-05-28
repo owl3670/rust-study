@@ -35,3 +35,17 @@ Cargo run 실행
 ```sh
 cargo run
 ```
+
+## Guessing Game
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/guessing_game/
+```
+
+Cargo run 실행
+
+```sh
+cargo run
+```
