@@ -28,4 +28,8 @@ fn main() {
     let _octal: i32 = 0o77;
     let _binary: i32 = 0b1111_0000;
     let _byte: u8 = b'A'; // u8 only
+    
+    let _float64_0 = 2.0;
+    let _float64_1 : f64 = 2.0;
+    let _float32 : f32 = 2.0;
 }
