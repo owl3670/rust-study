@@ -28,8 +28,26 @@ fn main() {
     let _octal: i32 = 0o77;
     let _binary: i32 = 0b1111_0000;
     let _byte: u8 = b'A'; // u8 only
-    
+   
+    // Floating-Point Types
+
     let _float64_0 = 2.0;
     let _float64_1 : f64 = 2.0;
     let _float32 : f32 = 2.0;
+
+    // Numeric Operations
+
+    let sum = 5 + 10;
+    println!("5 + 10 = {sum}");
+    let difference = 95.5 - 4.3;
+    println!("95.5 - 4.3 = {difference}");
+    let product = 4 * 30;
+    println!("4 * 30 = {product}");
+    let quotient = 56.7 / 32.2;
+    println!("56.7 / 32.2 = {quotient}");
+    let truncated = -5 / 3;
+    println!("-5 / 3 = {truncated}");
+    let remainder = 43 % 5;
+    println!("43 % 5 = {remainder}");
+
 }
