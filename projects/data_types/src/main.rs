@@ -50,4 +50,9 @@ fn main() {
     let remainder = 43 % 5;
     println!("43 % 5 = {remainder}");
 
+    // Boolean Type
+
+    let _true = true;
+    let _false: bool = false;
+
 }
