@@ -55,4 +55,10 @@ fn main() {
     let _true = true;
     let _false: bool = false;
 
+    // Character Type
+
+    let _c = 'z';
+    let _z: char = 'Z';
+    let _heart_eyed_cat = '😻';
+
 }
