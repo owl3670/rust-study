@@ -61,4 +61,17 @@ fn main() {
     let _z: char = 'Z';
     let _heart_eyed_cat = '😻';
 
+    // Compound Types
+    // Tuple Type
+
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    println!("The tuple is: {:?}", tup);
+    println!("The 0th index element of the tuple is: {}", tup.0);
+    println!("The 1th index element of the tuple is: {}", tup.1);
+    println!("The 2th index element of the tuple is: {}", tup.2);
+    let (x, y, z) = tup;
+    println!("The value of x is: {x}");
+    println!("The value of y is: {y}");
+    println!("The value of z is: {z}");
+    
 }
