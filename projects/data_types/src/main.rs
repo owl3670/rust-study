@@ -1,3 +1,5 @@
+use std::io;
+
 fn main() {
     let _guess: u32 = "42".parse().expect("Not a number!"); // It's okay
     // let guess = "42".parse().expect("Not a number!"); // error (type annotation needed)
@@ -73,5 +75,30 @@ fn main() {
     println!("The value of x is: {x}");
     println!("The value of y is: {y}");
     println!("The value of z is: {z}");
-    
+   
+    // Array Type
+
+    let a = [1, 2, 3, 4, 5];
+    let a = [3; 5];
+    println!("{:?}", a);
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    println!("{:?}", a);
+    println!("a[0] = {}", a[0]);
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!("The value of the element at index {index} is: {element}");
 }
