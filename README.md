@@ -48,4 +48,20 @@ Cargo run 실행
 
 ```sh
 cargo run
+
+```
+
+## Data Types
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/data_types/
+```
+
+Cargo run 실행
+
+```sh
+cargo run
+
 ```
