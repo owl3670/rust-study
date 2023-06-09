@@ -65,3 +65,18 @@ Cargo run 실행
 cargo run
 
 ```
+
+## Functions
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/functions/
+```
+
+Cargo run 실행
+
+```sh
+cargo run
+
+```
