@@ -12,6 +12,12 @@ fn main() {
         x + z
     };
     println!("The value of y is: {y}");
+
+    let x = five();
+    println!("The value of x is: {x}");
+
+    let x = plus_one(5);
+    println!("The value of x is: {x}");
 }
 
 fn another_function() {
@@ -24,4 +30,13 @@ fn another_param_function(x: i32) {
 
 fn add(a: i32, b: i32){
     println!("{a} + {b} = {}", a+b);
+}
+
+fn five() -> i32 {
+    5
+}
+
+fn plus_one(x: i32) -> i32{
+    //x + 1; // Error occured
+    x + 1
 }
