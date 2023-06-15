@@ -80,3 +80,18 @@ Cargo run 실행
 cargo run
 
 ```
+
+## Control Flow
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/control_flow/
+```
+
+Cargo run 실행
+
+```sh
+cargo run
+
+```
