@@ -95,3 +95,18 @@ Cargo run 실행
 cargo run
 
 ```
+
+## Ownership
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/ownership/
+```
+
+Cargo run 실행
+
+```sh
+cargo run
+
+```
