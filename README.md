@@ -101,7 +101,7 @@ cargo run
 실행을 위해 폴더로 이동
 
 ```sh
-cd ./projects/ownership/
+cd ./projects/img/
 ```
 
 Cargo run 실행
