@@ -69,3 +69,14 @@ Rust 에서는 이러한 문제를 해결하기 위해 `s2 = s1` 과 같은 연�
 
 다른 언어에서 *shallow copy* 와 *deep copy* 에 대해 공부해보신적이 있으실 수도 있습니다.  
 Rust 에서는 복사 후 첫 번째 변수를 무효화 시키기에 *move* 라는 표현을 사용합니다.
+
+## Variables and Data Interacting with Clone
+
+만약 String 의 heap data 를 deep copy 하고 싶다면 `clone` method 를 사용하면 됩니다.
+
+```rust
+let s1 = String::from("hello");
+let s2 = s1.clone();
+
+println!("s1 = {}, s2 = {}", s1, s2);
+```
