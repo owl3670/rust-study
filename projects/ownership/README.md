@@ -80,3 +80,28 @@ let s2 = s1.clone();
 
 println!("s1 = {}, s2 = {}", s1, s2);
 ```
+
+## Stack-Only Data: Copy
+
+```rust
+let x = 5;
+let y = x;
+
+println!("x = {}, y = {}", x, y);
+```
+
+위의 코드에서는 clone 의 호출이 없었음에도 x 가 유효한 것을 알 수 있습니다.  
+이는 int 와 같은 고정된 크기를 가지는 타입은 stack 에 저장되기 때문입니다.  
+때문에 실제 값이 빠르게 복사가 되며 x 가 무효하도록 할 이유가 없습니다.
+
+Rust 에는 Integer 와 같이 stack 에 저장된 type 에 `Copy` trait 이라는 특수 annotation 이 있고, 
+이러한 특성을 구현한 Type 은 복사되어 다른 변수에 할당된 후에도 유효할 수 있습니다.
+
+일반적으로 단순한 scalar 값들은 `Copy` trait 을 구현할 수 있으며, 할당이 필요하거나 resource의 형태인 것은 `Copy` trait 을 구현할 수 없습니다.
+다음은 Copy trait 을 구현하는 type 들의 몇 가지 유형입니다.
+
+- integer types
+- boolean types
+- floating point types
+- character types
+- tuples (`Copy` 를 구현하는 유형만 포함된 경우)
