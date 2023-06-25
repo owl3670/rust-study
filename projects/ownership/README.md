@@ -105,3 +105,33 @@ Rust 에는 Integer 와 같이 stack 에 저장된 type 에 `Copy` trait 이라�
 - floating point types
 - character types
 - tuples (`Copy` 를 구현하는 유형만 포함된 경우)
+
+# Ownership and Functions
+
+function 으로 변수를 넘기는 동작 방식은 변수를 다른 변수로 할당하는 동작 방식과 유사합니다.  
+function 으로 넘겨지는 변수는 `move` 가 되거나 `copy` 가 됩니다.
+
+```rust
+fn main() {
+    let s = String::from("hello");  // s 변수가 scope 에 들어옴
+
+    takes_ownership(s);             // s 값이 함수로 이동됨
+                                    // ... s 는 더이상 유효하지 않음
+
+    let x = 5;                      // x 변수가 scope 에 들어옴
+
+    makes_copy(x);                  // x 값이 함수로 이동됨
+                                    // ... x 는 i32 타입이 Copy trait 을 구현하므로 여전히 유효함
+
+} // 여기서 x 가 scope 밖으로 나가고, s 도 scope 밖으로 나감. 하지만 s 는 이미 이동되었으므로, 별다른 일이 발생하지 않음
+
+fn takes_ownership(some_string: String) { // some_string 변수가 scope 에 들어옴
+    println!("{}", some_string);
+} // 여기서 some_string 이 scope 밖으로 벗어나고 `drop` 이 호출됨. some_string 의 backing memory 가 해제됨.
+
+fn makes_copy(some_integer: i32) { // some_integer 변수가 scope 에 들어옴
+    println!("{}", some_integer);
+} // 여기서 some_integer 가 scope 밖으로 벗어나지만, 별다른 일이 발생하지 않음.
+```
+
+위의 코드에서 `s` 변수를 `takes_ownership` 함수 호출 다음에 사용하려 하면 컴파일 에러가 발생합니다.
