@@ -135,3 +135,52 @@ fn makes_copy(some_integer: i32) { // some_integer 변수가 scope 에 들어옴
 ```
 
 위의 코드에서 `s` 변수를 `takes_ownership` 함수 호출 다음에 사용하려 하면 컴파일 에러가 발생합니다.
+
+# Return Values ans Scope
+
+반환되는 값도 ownership 이 이동됩니다.
+
+```rust
+fn main() {
+    let s1 = gives_ownership();         // gives_ownership 함수가 반환하는 값이 s1 으로 이동됨
+
+    let s2 = String::from("hello");     // s2 변수가 scope 에 들어옴
+
+    let s3 = takes_and_gives_back(s2);  // s2 값이 함수로 이동되고, 반환되는 값이 s3 으로 이동됨
+} // 여기서 s3 가 scope 밖으로 벗어나고 drop 이 호출됨. s2 가 이동되었으므로 아무 일도 발생하지 않음. s1 이 scope 밖으로 벗어나고 drop 이 호출됨.
+
+fn gives_ownership() -> String {             // gives_ownership 함수가 반환하는 값이 호출한 함수로 이동됨
+    let some_string = String::from("hello"); // some_string 변수가 scope 에 들어옴
+
+    some_string                              // some_string 이 반환되고, 호출한 함수로 이동됨
+}
+
+// takes_and_gives_back 함수는 String 을 하나 받아서 다른 하나를 반환함
+fn takes_and_gives_back(a_string: String) -> String { // a_string 변수가 scope 에 들어옴
+    a_string  // a_string 이 반환되고, 호출한 함수로 이동됨
+}
+```
+
+변수의 ownership 은 항상 같은 패턴을 따릅니다: 다른 변수에 값을 할당하면 변수가 이동합니다.
+heap 데이터를 포함하고 있는 변수가 범위를 벗어나면 data 의 소유값이 다른 변수로 이동하지 않는 한 해당 값은 drop 됩니다.
+
+만약 함수가 값을 사용하더라도 ownership 을 유지하고 싶다면, 해당 값을 함수로부터 반환하면 됩니다.
+이는 꽤 복잡한 과정이 필요하나 rust 에서는 tuple 을 사용하여 해결할 수 있습니다.
+
+```rust
+fn main() {
+    let s1 = String::from("hello");
+
+    let (s2, len) = calculate_length(s1);
+
+    println!("The length of '{}' is {}.", s2, len);
+}
+
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len(); // len() 메소드는 String 의 길이를 반환함
+
+    (s, length)
+}
+```
+
+하지만 이는 매우 번거로운 과정인데 다행히도 Rust 에서는 소유권을 이전하지 않고 값을 사용할 수 있는 기능인 reference 를 제공합니다.
