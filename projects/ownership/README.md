@@ -1,10 +1,18 @@
-# Ownership Rules
+# What is Ownership?
+
+Ownership 은 Rust 가 메모리를 관리하는 방법입니다.  
+Memory 관리는 보통 garbage collector 를 두던가 명시적으로 할당과 해제를 기재하는 방식을 사용하던가 해서 관리하게 됩니다.  
+Rust 는 다른 언어들과는 다르게 메모리를 관리합니다. rust 에서는 ownership 이라는 규칙을 두어 compiler 가 확인하게 합니다.  
+이 규칙이 지켜지지 않는다면 compile 되지 않습니다.
+
+
+## Ownership Rules
 
 * Rust 에서 각 변수는 owner 를 가지고 있음
 * owner 는 한 번에 하나만 있을 수 있음
 * owner 가 scope 를 벗어 났을때, 변수는 삭제됨
 
-# Variable Scope
+## Variable Scope
 
 변수는 선언된 시점부터 현재 범위가 끝날 때까지 유효합니다.
 
