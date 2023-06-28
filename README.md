@@ -31,7 +31,6 @@ cd ./projects/hello_cargo/
 
 Cargo run 실행
 
-
 ```sh
 cargo run
 ```
@@ -48,7 +47,6 @@ Cargo run 실행
 
 ```sh
 cargo run
-
 ```
 
 ## Data Types
@@ -63,7 +61,6 @@ Cargo run 실행
 
 ```sh
 cargo run
-
 ```
 
 ## Functions
@@ -78,7 +75,6 @@ Cargo run 실행
 
 ```sh
 cargo run
-
 ```
 
 ## Control Flow
@@ -93,7 +89,6 @@ Cargo run 실행
 
 ```sh
 cargo run
-
 ```
 
 ## Ownership
@@ -101,15 +96,31 @@ cargo run
 실행을 위해 폴더로 이동
 
 ```sh
-cd ./projects/img/
+cd ./projects/ownership/
 ```
 
 Cargo run 실행
 
 ```sh
 cargo run
-
 ```
 
 Readme
 - [Ownership](projects/ownership)   
+
+## References and Borrowing
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/references_and_borrowing/
+```
+
+Cargo run 실행
+
+```sh
+cargo run
+```
+
+Readme
+- [References and Borrowing](projects/references_and_borrowing)
