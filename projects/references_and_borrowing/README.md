@@ -26,7 +26,7 @@ fn calculate_length(s: &String) -> usize {
 
 ![reference](./img/trpl04-05.svg)
 
-위의 코드를 좀 더 자세히 살펴보겠습니다.
+코드를 좀 더 자세히 살펴보겠습니다.
 
 ```rust
 let s1 = String::from("hello");
@@ -51,6 +51,7 @@ reference 를 생성하는 작업을 `borrowing` 이라고 합니다.
 만약 우리가 `borrowing` 한 것을 수정하려면 어떻게 될까요?
 
 ```rust
+// Error 를 발생시키는 코드
 fn main() {
     let s = String::from("hello");
 
@@ -64,3 +65,36 @@ fn change(some_string: &String) {
 
 위의 code 는 에러를 발생시키게 됩니다.  
 reference 는 변수와 마찬가지로 immutable 이 기본이기 때문입니다.
+
+## Mutable References
+
+위에서 마지막에 보았던 code 를 borrowed 된 값이 수정이 가능하도록 다시 작성할 수 있습니다.
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    change(&mut s);
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+```
+
+우선 `s` 변수를 mutable 하게 선언해야 합니다.  
+다음으로 함수에 인자를 넘길때 `&mut` 을 사용하여 mutable reference 를 생성합니다.  
+함수에서는 `&mut String` 을 받도록 명시합니다.
+
+Mutable reference 에는 한 가지 큰 제약이 있는데, 그것은 한 개의 mutable reference 만 존재할 수 있다는 것입니다.  
+아래와 같은 코드는 에러를 발생시키게 됩니다.
+
+```rust
+let mut s = String::from("hello");
+
+let r1 = &mut s;
+let r2 = &mut s;
+
+println!("{}, {}", r1, r2);
+```
+
