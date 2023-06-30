@@ -98,3 +98,13 @@ let r2 = &mut s;
 println!("{}, {}", r1, r2);
 ```
 
+이러한 제한으로 인해 Rust 는 compile 시 race condition 과 같은 것을 방지 할 수 있습니다.
+
+data race condition 은 다음과 같은 세 가지 상황에서 발생합니다.
+
+* 두 개 이상의 포인터가 동시에 동일한 데이터에 access 함
+* 포인터 중 하나 이상이 데이터 write 에 사용됨
+* 데이터에 대한 access 를 동기화 하는데 사용되는 메커니즘이 없음
+
+data race 는 알 수 없는 동작을 유발 시키고 분석과 수정을 어렵게 합니다.  
+Rust 에러한 data race 를 compile 시에 방지합니다.
