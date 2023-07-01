@@ -108,3 +108,42 @@ data race condition 은 다음과 같은 세 가지 상황에서 발생합니다
 
 data race 는 알 수 없는 동작을 유발 시키고 분석과 수정을 어렵게 합니다.  
 Rust 에러한 data race 를 compile 시에 방지합니다.
+
+중괄호를 사용해서 새로운 scope 를 생성하면 두 개의 mutable reference 를 생성할 수 있습니다.
+
+```rust
+let mut s = String::from("hello");
+
+{
+    let r1 = &mut s;
+
+}
+
+let r2 = &mut s;
+```
+
+rust 에서는 mutable 과 immutable reference 를 동시에 생성하는 것도 불가능합니다.
+
+```rust
+let mut s = String::from("hello");
+
+let r1 = &s; // no problem
+let r2 = &s; // no problem
+let r3 = &mut s; // BIG PROBLEM
+
+println!("{}, {}, and {}", r1, r2, r3);
+```
+
+reference 의 범위는 해당 reference가 마지막으로 사용된 시점까지만 유지됩니다.
+
+```rust
+let mut s = String::from("hello");
+
+let r1 = &s; // no problem
+let r2 = &s; // no problem
+println!("{} and {}", r1, r2);
+// r1 and r2 are no longer used after this point
+
+let r3 = &mut s; // no problem
+println!("{}", r3);
+```
