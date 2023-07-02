@@ -188,5 +188,8 @@ fn no_dangle() -> String {
 }
 ```
 
+## The Rules of References
 
+* 하나의 mutable reference 또는 여러 개의 immutable reference 를 생성할 수 있습니다.
+* reference 는 항상 유효해야 합니다.
 
