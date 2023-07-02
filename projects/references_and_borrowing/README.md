@@ -147,3 +147,46 @@ println!("{} and {}", r1, r2);
 let r3 = &mut s; // no problem
 println!("{}", r3);
 ```
+
+## Dangling References
+
+dangling pointer 란 다른 사람에게 제공되었을 수 있는 유효하지 않은 pointer 를 말합니다. pointer 를 사용하는 언어에서는 dangling pointer 를 실수로 생성할 수 있습니다.  
+하지만 Rust 에서는 컴파일러가 dangling pointer 를 생성하지 못하도록 막습니다.
+
+```rust
+fn main() {
+    let reference_to_nothing = dangle();
+}
+
+fn dangle() -> &String {
+    let s = String::from("hello");
+
+    &s
+}
+```
+
+위의 코드는 compile error 를 발생시킵니다. 그 이유를 살펴보겠습니다.
+
+```rust
+fn dangle() -> &String {
+    let s = String::from("hello"); // s 가 새롭게 생성됨
+
+    &s // s 의 reference 를 반환함
+} // s 가 scope 를 벗어나 drop 됨. 그러나 reference 는 반환되기에 dangling reference 가 됨
+```
+
+`s` 는 scope에서 벗어나면서 drop 되기에 `&s` 는 dangling reference 가 됩니다.  
+Rust 에서는 이러한 상황을 허용하지 않기에 error 를 발생시키게 됩니다.
+
+이러한 dangling reference 를 피하기 위해서는 `String` 을 직접 return 하여 ownership 을 넘겨주어야 합니다.
+
+```rust
+fn no_dangle() -> String {
+    let s = String::from("hello");
+
+    s
+}
+```
+
+
+
