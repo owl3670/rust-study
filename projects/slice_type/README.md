@@ -35,3 +35,41 @@ fn main() {
 `word` 는 `s` 의 data 와 동기화되지 않기 때문에 발생하는 문제입니다.
 
 rust 에서는 이러한 문제를 string slice 를 통해 해결할 수 있습니다.
+
+## String Slices
+
+string slice 는 string 의 일부를 참조하는 reference 입니다.  
+아래는 string slice 를 사용하는 예시입니다.
+
+```rust
+let s = String::from("hello world");
+
+let hello = &s[0..5];
+let world = &s[6..11];
+```
+
+위의 코드에서 `s` 와 `world` 의 메모리 구조를 그림으로 나타내면 아래와 같습니다.
+
+![string slice](./img/trpl04-06.svg)
+
+Rust 에서는 `..` 를 사용해 범위를 지정할 수 있습니다.  
+`start_index..end_index` 의 형태로 범위를 지정할 수 있으며, start_index 는 범위에 포함되지만 end_index 는 범위에 포함되지 않습니다. (start_index <= 범위 < end_index)  
+범위를 지정할 때 시작점과 끝점을 생략할 수도 있습니다.  
+또한 변수를 통해 범위를 지정할 수도 있습니다.
+
+```rust
+let s = String::from("hello world");
+
+let hello = &s[0..5];
+let hello = &s[..5];
+
+let world = &s[6..];
+let world = &s[6..11];
+
+let len = s.len();
+let world = &s[6..len];
+
+let slice = &s[0..len];
+let slice = &s[..];
+```
+
