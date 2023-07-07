@@ -50,7 +50,7 @@ let world = &s[6..11];
 
 위의 코드에서 `s` 와 `world` 의 메모리 구조를 그림으로 나타내면 아래와 같습니다.
 
-![string slice](./img/trpl04-06.svg)
+<img src="./img/trpl04-06.svg" width="450px" height="600px" alt="string_slice1></img>
 
 Rust 에서는 `..` 를 사용해 범위를 지정할 수 있습니다.  
 `start_index..end_index` 의 형태로 범위를 지정할 수 있으며, start_index 는 범위에 포함되지만 end_index 는 범위에 포함되지 않습니다. (start_index <= 범위 < end_index)  
