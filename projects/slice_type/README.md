@@ -73,3 +73,38 @@ let slice = &s[0..len];
 let slice = &s[..];
 ```
 
+> String slice 는 항상 유효한 UTF-8 문자열을 참조해야 합니다.
+
+맨 처음의 함수를 string slice 를 사용해 다시 작성해보겠습니다.
+
+```rust
+fn first_word(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+```
+
+함수에서 공백이 등장하는 index 를 찾아 string slice 로 만들어 반환하도록 바꾸었습니다.
+이제는 컴파일러가 문자열에 대한 참조가 유효 하도록 보장하기 때문에 더 안전한 코드가 되었습니다.
+
+```rust
+fn main() {
+    let mut s = String::from("hello world");
+
+    let word = first_word(&s);
+
+    s.clear(); // error!
+
+    println!("the first word is: {}", word);
+}
+```
+
+원래의 코드에서는 index 를 받은 후 문자열이 지워져 후에 해당 index 를 계속 사용하려 할 때 에러를 발생시킬 가능성이 있었지만,  
+string slice 를 사용해 `s` 의 일부분을 참조하므로써 `s` 가 유효하지 않게 된다면 컴파일러가 에러를 발생시킵니다.
