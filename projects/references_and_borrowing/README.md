@@ -24,7 +24,7 @@ fn calculate_length(s: &String) -> usize {
 위의 코드에서 `&s1` 은 `s1` 의 reference 를 calculate_length 함수에 전달합니다.
 위 코드에서 메모리 상태를 그림으로 확인하면 아래와 같습니다.
 
-![reference](./img/trpl04-05.svg)
+<img src="./img/trpl04-05.svg" width="600px" height="300px" alt="Image"></img>
 
 코드를 좀 더 자세히 살펴보겠습니다.
 
