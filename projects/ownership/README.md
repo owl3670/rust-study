@@ -46,7 +46,7 @@ let s2 = s1;
 위의 코드는 어떻게 동작할까요?  
 int 형 변수를 할당 하고 복사하는 것과 같은 방식으로 동작할 것 같지만 그렇지 않습니다.
 
-![Image](./img/trpl04-01.svg)
+<img src="./img/trpl04-01.svg" width="450px" height="350px" alt="Image"></img>
 
 위 그림은 s1 의 메모리 구조를 그림으로 나타낸 것입니다.  
 그림에서 왼쪽은 stack 영역 오른쪽은 heap 영역을 의미합니다.  
@@ -55,12 +55,12 @@ ptr 은 실제 값이 저장된 메모리의 주소를 가리키고, len 은 con
 
 이제 s1 을 s2 에 할당하면 어떤 일이 일어나는지 살펴보겠습니다.
 
-![Image](./img/trpl04-02.svg)
+<img src="./img/trpl04-02.svg" width="450px" height="600px" alt="Image"></img>
 
 위 그림에서 볼 수 있듯이 s1 의 값이 s2 로 복사되는 것이 아니라 s1 의 ptr, len, capacity 가 s2 로 복사됩니다.  
 즉 heap 의 data 는 복사되지 않고 heap 주소를 가르키는 ptr 이 복사되는 것입니다.
 
-![Image](./img/trpl04-03.svg)
+<img src="./img/trpl04-03.svg" width="450px" height="600px" alt="Image"></img>
 
 위 그림과 같이 heap 의 data 도 복사하면 안되는 것일까요?  
 만약 Rust 가 위와 같이 동작한다면 `s2 = s1` 과 같은 연산을 수행할 때 heap 의 data 가 크다면 많은 시간이 소요될 것입니다.  
@@ -70,7 +70,7 @@ ptr 은 실제 값이 저장된 메모리의 주소를 가리키고, len 은 con
 그런데 두 개의 변수가 같은 메모리를 가르키고 있다면 두 개의 변수가 범위를 벗어나면 두 번의 drop 을 호출하게 됩니다.  
 이는 이중 해제 오류를 발생시키고 앞서 언급한 메모리 안전 버그 중 하나입니다.
 
-![Image](./img/trpl04-04.svg)
+<img src="./img/trpl04-04.svg" width="450px" height="600px" alt="Image"></img>
 
 Rust 에서는 이러한 문제를 해결하기 위해 `s2 = s1` 과 같은 연산을 수행할 때 위 그림과 같이 s1 의 유효성을 무효화 시킵니다.  
 때문에 s1 이 범위를 벗어나도 drop 을 호출하지 않습니다.  
