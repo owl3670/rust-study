@@ -111,11 +111,40 @@ string slice 를 사용해 `s` 의 일부분을 참조하므로써 `s` 가 유�
 
 ### String Literals as Slices
 
-문자열 리터럴은 binary 안에 저장됩니다.
+string literal은 binary 안에 저장됩니다.
 
 ```rust
 let s = "Hello, world!";
 ```
 
 위의 코드에서 `s` 의 type 은 `&str` 입니다.  
-즉 문자열 리터럴은 binary 의 특정 지점을 가리키는 슬라이스이며, 문자열 리터럴이 불변인 이유입니다.
+즉 string literal은 binary 의 특정 지점을 가리키는 슬라이스이며, string literal이 불변인 이유입니다.
+
+### String Slices as Parameters
+
+string slice 를 사용하면 함수의 parameter 를 더 유연하게 만들 수 있습니다.
+
+```rust
+fn first_word(s: &str) -> &str {
+    // ...
+}
+```
+
+위의 함수는 string slice 를 바로 전달할 수도 있고, String 을 전달해야 한다면 이의 slice 나 참조를 전달할 수 있습니다.
+
+```rust
+fn main() {
+    let my_string = String::from("hello world");
+
+    // String 의 일부분이나 전체를 전달할 수 있습니다.
+    let word = first_word(&my_string[0..6]);
+    let word = first_word(&my_string[..]);
+    // String 의 참조 값을 전달 할 수도 있습니다.
+    let word = first_word(&my_string);
+
+    let my_string_literal = "hello world";
+
+    // String literal 은 그 자체가 string slice 이므로 바로 전달할 수 있습니다.
+    let word = first_word(my_string_literal);
+}
+```
