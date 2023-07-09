@@ -148,3 +148,18 @@ fn main() {
     let word = first_word(my_string_literal);
 }
 ```
+
+## Other Slices
+
+배열을 slice 로 만들 수도 있습니다.
+
+```rust
+let a = [1, 2, 3, 4, 5];
+
+let slice = &a[1..3];
+
+assert_eq!(slice, &[2, 3]);
+```
+
+위의 코드에서 슬라이스의 type은 `&[i32]` 입니다.  
+string slice 와 동일한 방식으로 작동하며, 이러한 slice 는 다른 모든 종류의 collection 에 사용할 수 있습니다.
