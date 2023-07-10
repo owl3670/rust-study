@@ -141,3 +141,20 @@ cargo run
 
 Readme
 - [Slice Type](projects/slice_type)
+
+## Structs
+
+실행을 위해 폴더로 이동
+
+```sh
+cd ./projects/structs/
+```
+
+Cargo run 실행
+
+```sh
+cargo run
+```
+
+Readme
+- [Structs](projects/structs)
