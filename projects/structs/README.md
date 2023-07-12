@@ -71,3 +71,18 @@ fn build_user(email: String, username: String) -> User {
     }
 }
 ```
+
+## Using the Field Init Shorthand
+
+Struct 의 field 와 struct 생성에 전달되는 parameter 혹은 변수의 이름이 같다면 `field init shorthand` 를 사용할 수 있습니다.
+
+```rust
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
+```
