@@ -86,3 +86,32 @@ fn build_user(email: String, username: String) -> User {
     }
 }
 ```
+
+## Creating Instances From Other Instances With Struct Update Syntax
+
+새로운 instance 를 생성할 때, struct update syntax 를 사용하여 기존 instance 의 field 값을 사용할 수 있습니다.
+
+```rust
+fn main() {
+    let user1 = User {
+        email: String::from("testemail"),
+        username: String::from("testname"),
+        active: true,
+        sign_in_count: 1,
+    };
+
+    let user2 = User {
+        email: String::from("testemail2"),
+        username: String::from("testname2"),
+        ..user1
+    };
+}
+```
+
+위에 코드에서 `..` 을 사용하여 user1 의 나머지 field 를 사용하여 user2 를 생성하도록 하였습니다.  
+해당 구문은 맨 마지막에 위치해야 하지만 field 의 순서와는 상관 없습니다.  
+
+struct update syntax 는 할당처럼 `=` 를 사용하는데 이는 데이터가 이동하기 때문입니다.  
+위에 예제에서 user2 는 email 과 username 을 새로 할당하였는데, 만약 user1 의 email 과 username 을 그대로 사용한다면 user1 은 더이상 사용할 수 없게 됩니다.  
+active 와 sign_in_count 는 모두 copy 특성을 구현하는 type 이기에 struct update syntax 를 사용해도 무관합니다.
+
