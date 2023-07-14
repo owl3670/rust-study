@@ -59,4 +59,34 @@ fn main() {
         active: true,
     };
     println!("user1's email: {}", user1.email);
+
+    let user1 = User {
+        email: String::from("testemail"),
+        username: String::from("testname"),
+        active: true,
+        sign_in_count: 1,
+    };
+
+    let user2 = User {
+        email: String::from("testemail2"),
+        username: user1.username,
+        ..user1
+    };
+
+    // println!("user1's email: {}", user1.username); // Error occured
+
+    let user1 = User {
+        email: String::from("testemail"),
+        username: String::from("testname"),
+        active: true,
+        sign_in_count: 1,
+    };
+
+    let user2 = User {
+        email: String::from("testemail2"),
+        username: String::from("testname2"),
+        ..user1
+    };
+
+    println!("user1's email: {}", user1.username);
 }
