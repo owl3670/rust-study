@@ -115,3 +115,18 @@ struct update syntax 는 할당처럼 `=` 를 사용하는데 이는 데이터�
 위에 예제에서 user2 는 email 과 username 을 새로 할당하였는데, 만약 user1 의 email 과 username 을 그대로 사용한다면 user1 은 더이상 사용할 수 없게 됩니다.  
 active 와 sign_in_count 는 모두 copy 특성을 구현하는 type 이기에 struct update syntax 를 사용해도 무관합니다.
 
+## Using Tuple Structs Without Named Fields to Create Different Types
+
+Struct 를 정의할 때 field 의 이름을 명시하지 않는 tuple struct 를 사용할 수도 있습니다.
+
+```rust
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+fn main() {
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
+}
+```
+
+위에서 `Color` struct 와 `Point` struct 내부가 모두 `i32` 로 동일하더라도 다른 type 으로 취급됩니다.  

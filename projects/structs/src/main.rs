@@ -23,6 +23,8 @@ fn build_user1(email: String, username: String) -> User {
     }
 }
 
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
 
 fn main() {
     let user1 = User {
@@ -89,4 +91,12 @@ fn main() {
     };
 
     println!("user1's email: {}", user1.username);
+
+    let mut black = Color(0, 0, 0);
+    let origin = Point(1, 0, 0);
+
+    // black = origin; // Error occured
+    black.0 = origin.0;
+    println!("black: ({}, {}, {})", black.0, black.1, black.2);
+    println!("origin: ({}, {}, {})", origin.0, origin.1, origin.2);
 }
