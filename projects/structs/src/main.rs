@@ -26,6 +26,8 @@ fn build_user1(email: String, username: String) -> User {
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
+struct UnitLikeStruct;
+
 fn main() {
     let user1 = User {
         username: String::from("testname"),
@@ -99,4 +101,6 @@ fn main() {
     black.0 = origin.0;
     println!("black: ({}, {}, {})", black.0, black.1, black.2);
     println!("origin: ({}, {}, {})", origin.0, origin.1, origin.2);
+
+    let _unit = UnitLikeStruct;
 }

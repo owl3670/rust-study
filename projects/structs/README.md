@@ -130,3 +130,16 @@ fn main() {
 ```
 
 위에서 `Color` struct 와 `Point` struct 내부가 모두 `i32` 로 동일하더라도 다른 type 으로 취급됩니다.  
+
+## Unit-Like Structs Without Any Fields
+
+Struct 를 정의할 때 field 를 하나도 명시하지 않는 unit-like struct 를 사용할 수도 있습니다.  
+unit-like struct 는 data 를 가지지 않는 어떠한 의미만을 위한 type 을 구현해야 할 때 유용합니다. 
+
+```rust
+struct UnitLikeStruct;
+
+fn main() {
+    let unit_like_struct = UnitLikeStruct;
+}
+```
