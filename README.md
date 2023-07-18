@@ -108,40 +108,6 @@ cargo run
 Readme
 - [Ownership](projects/ownership)   
 
-## References and Borrowing
-
-실행을 위해 폴더로 이동
-
-```sh
-cd ./projects/references_and_borrowing/
-```
-
-Cargo run 실행
-
-```sh
-cargo run
-```
-
-Readme
-- [References and Borrowing](projects/references_and_borrowing)
-
-## Slice Type
-
-실행을 위해 폴더로 이동
-
-```sh
-cd ./projects/slice_type/
-```
-
-Cargo run 실행
-
-```sh
-cargo run
-```
-
-Readme
-- [Slice Type](projects/slice_type)
-
 ## Structs
 
 실행을 위해 폴더로 이동
