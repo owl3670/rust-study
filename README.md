@@ -49,40 +49,12 @@ Cargo run 실행
 cargo run
 ```
 
-## Data Types
+## Common Programming Concepts
 
 실행을 위해 폴더로 이동
 
 ```sh
-cd ./projects/data_types/
-```
-
-Cargo run 실행
-
-```sh
-cargo run
-```
-
-## Functions
-
-실행을 위해 폴더로 이동
-
-```sh
-cd ./projects/functions/
-```
-
-Cargo run 실행
-
-```sh
-cargo run
-```
-
-## Control Flow
-
-실행을 위해 폴더로 이동
-
-```sh
-cd ./projects/control_flow/
+cd ./projects/concept/
 ```
 
 Cargo run 실행
