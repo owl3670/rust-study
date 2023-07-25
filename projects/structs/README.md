@@ -166,5 +166,24 @@ fn area(width: u32, height: u32) -> u32 {
 
 위의 코드에서 사각형의 면적을 구하는 `area` 함수를 만들었는데, 이 함수는 width 와 height 를 parameter 로 받아서 면적을 구합니다.  
 그런데 이 함수만 놓고 봤을때는 parameter가 사각형과 관련이 있는지 명확하지 않습니다.  
-우리는 이를 tuple type 을 사용하여 해결할 수 있습니다.
 
+## Refactoring with Tuples
+
+```rust
+fn main() {
+    let rect1 = (30, 50);
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(rect1)
+    );
+}
+
+fn area(dimensions: (u32, u32)) -> u32 {
+    dimensions.0 * dimensions.1
+}
+```
+
+위의 코드에서 `area` 함수는 tuple 을 parameter 로 받아서 면적을 구합니다.  
+한개의 인자만 전달하면 되기에 어떤 면에서는 더 개선되었다고 볼 수 있지만 여전히 parameter 가 사각형과 관련이 있는지 명확하지 않습니다.  
+또한 너비와 높이를 구분하기 위해 tuple 의 index 를 사용해야 하는데 이는 가독성을 떨어뜨립니다.
