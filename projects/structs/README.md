@@ -187,3 +187,34 @@ fn area(dimensions: (u32, u32)) -> u32 {
 위의 코드에서 `area` 함수는 tuple 을 parameter 로 받아서 면적을 구합니다.  
 한개의 인자만 전달하면 되기에 어떤 면에서는 더 개선되었다고 볼 수 있지만 여전히 parameter 가 사각형과 관련이 있는지 명확하지 않습니다.  
 또한 너비와 높이를 구분하기 위해 tuple 의 index 를 사용해야 하는데 이는 가독성을 떨어뜨립니다.
+
+## Refactoring with Structs: Adding More Meaning
+
+우리는 struct 를 사용하여 data 의 이름을 명시할 수 있습니다.
+
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(&rect1)
+    );
+}
+
+fn area(rectangle: &Rectangle) -> u32 {
+    rectangle.width * rectangle.height
+}
+```
+
+위의 코드에서 `Rectangle` struct 를 정의하고, `area` 함수의 parameter 를 `Rectangle` struct 의 reference 로 변경하였습니다.  
+`Rectangle` struct 는 `width` 와 `height` 라는 field 를 가지고 있기 때문에 너비와 높이를 명확히 구분할 수 있으며,  
+area 함수의 parameter 또한 `Rectangle` struct 의 reference 이기 때문에 `Rectangle` 의 면적을 구하는 함수인 것을 명확히 할 수 있습니다.
