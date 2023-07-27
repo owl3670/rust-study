@@ -283,3 +283,19 @@ fn main() {
 [Appendix C](https://doc.rust-lang.org/book/appendix-03-derivable-traits.html) 에서 다른 trait 들을 확인할 수 있습니다.
 
 
+### Debug print with pretty print
+
+`Debug` trait 을 사용하면 `println!` 을 사용할 때 `{:?}` 를 사용하여 출력할 수 있습니다.  
+그런데 이는 `Debug` trait 을 위한 출력이기 때문에 사용자가 읽기 쉬운 형태가 아닐 수 있습니다.  
+우리는 `{:#?}` 를 사용하여 `Debug` trait 을 위한 출력을 좀 더 읽기 쉽게 만들 수 있습니다.
+
+```rust
+println!("rect1 is {:#?}", rect1);
+```
+
+다른 방법으로는 `dbg!` macro 를 사용하는 것이 있습니다.  
+`dbg!` macro는 file 과 line number 까지도 출력해줍니다.
+
+```rust
+dbg!(&rect1);
+```
