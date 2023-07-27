@@ -218,3 +218,68 @@ fn area(rectangle: &Rectangle) -> u32 {
 위의 코드에서 `Rectangle` struct 를 정의하고, `area` 함수의 parameter 를 `Rectangle` struct 의 reference 로 변경하였습니다.  
 `Rectangle` struct 는 `width` 와 `height` 라는 field 를 가지고 있기 때문에 너비와 높이를 명확히 구분할 수 있으며,  
 area 함수의 parameter 또한 `Rectangle` struct 의 reference 이기 때문에 `Rectangle` 의 면적을 구하는 함수인 것을 명확히 할 수 있습니다.
+
+## Adding Useful Functionality with Derived Traits
+
+아래 코드와 같이 `Rectangle` struct 를 출력해보면 에러가 발생합니다.
+
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {}", rect1); // error
+}
+```
+`Rectangle` struct 는 `Display` 을 구현하지 않았기 때문인데요,  
+Rust 에서는 struct 는 여러 파라미터가 있기에 출력의 방식이 모호하여 `Display` 구현이 제공되지 않습니다.  
+대신 `println!` 안에서 포맷을 변경하여 `Debug` trait 을 사용하도록 해보겠습니다.
+
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {:?}", rect1); // error
+}
+```
+
+이번에도 에러가 발생하는데, 이는 `Rectangle` struct 이 `Debug` trait 을 구현하지 않았기 때문입니다.  
+struct 는 기본적으로 `Debug` trait 을 구현하지 않는데 `Debug` trait 을 구현하게 하려면 `#[derive(Debug)]` annotation 을 사용하면 됩니다.
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {:?}", rect1);
+}
+```
+
+이제 `Rectangle` struct 를 출력할 수 있습니다.  
+`Debug` trait 외에도 다른 trait 들을 사용할 수 있습니다.  
+[Appendix C](https://doc.rust-lang.org/book/appendix-03-derivable-traits.html) 에서 다른 trait 들을 확인할 수 있습니다.
+
+
