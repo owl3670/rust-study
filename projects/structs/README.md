@@ -299,3 +299,11 @@ println!("rect1 is {:#?}", rect1);
 ```rust
 dbg!(&rect1);
 ```
+
+# Method Syntax
+
+Method 는 함수와 유사하지만 method 는 struct 의 context 에서만 사용할 수 있습니다.  
+그리고 함수와는 달리 첫 번째 parameter 는 항상 `self` 를 사용해야 합니다.  
+`self`는 method 가 호출되는 struct의 instance 를 가리킵니다.  
+
+
