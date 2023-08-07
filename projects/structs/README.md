@@ -306,4 +306,61 @@ Method 는 함수와 유사하지만 method 는 struct 의 context 에서만 사
 그리고 함수와는 달리 첫 번째 parameter 는 항상 `self` 를 사용해야 합니다.  
 `self`는 method 가 호출되는 struct의 instance 를 가리킵니다.  
 
+## Defining Methods
+
+아래 코드는 `Rectangle` struct 에 `area` method 를 추가한 것입니다.
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    )
+}
+```
+
+`impl` block 을 사용하여 `Rectangle` struct 에 `area` method 를 추가하였습니다.  
+`area` method 의 signature 는 `rectangle: &Rectangle` 대신 `&slef` 를 사용하였습니다.  
+method 는 반드시 `self` 를 첫 번째 parameter 로 가져야 하며, `self` 는 method 가 호출되는 struct 의 instance 를 가리킵니다.  
+
+함수 대신 method 를 사용하는 주된 이유는 해당 struct 를 통해 할 수 있는 작업을 정리해 둘 수 있기 때문입니다.
+
+우리는 struct 의 field 와 같은 이름의 method를 통해 특별한 목적으로 사용할 수 있게 할 수도 있습니다.  
+아래 코드는 `Rectangle` struct 에 `width` method 를 추가한 것입니다.
+
+```rust
+impl Rectangle {
+    fn width(&self) -> bool {
+        self.width > 0
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    if rect1.width() {
+        println!("rect1's width is greater than 0");
+    }
+}
+```
 
