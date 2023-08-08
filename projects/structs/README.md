@@ -364,3 +364,42 @@ fn main() {
 }
 ```
 
+## Methods with More Parameters
+
+method 는 여러개의 parameter 를 가질 수 있습니다.  
+`Rectangle` struct 에 다른 `Rectangle` 을 포함할 수 있는지 확인하는 `can_hold` method 를 추가해보겠습니다.
+
+```rust
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+}
+```
+
+
+
