@@ -401,5 +401,28 @@ fn main() {
 }
 ```
 
+## Associated Functions
 
+`impl` block 안에서 정의된 모든 함수는 associated function 이라고 불립니다.  
+method 와는 다르게 associated function 은 `self` parameter 를 가지지 않습니다.  
+associated function 은 보통 struct 의 새로운 instance 를 return 하는 constructor 로써 사용됩니다.  
+아래 코드는 `Rectangle` struct 에 `square` associated function 을 추가한 것입니다.
+
+```rust
+impl Rectangle {
+    fn square(size: u32) -> Self {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+```
+
+위의 코드에서 return type 의 `Self` 는 `impl` keyword 뒤에 등장한 `Rectangle` 을 의미합니다.
+`square` associated function 을 호출하기 위해서는 `::` 를 사용해야 합니다.  
+
+```rust
+let sq = Rectangle::square(3);
+```
 
