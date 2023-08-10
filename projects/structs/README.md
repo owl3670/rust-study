@@ -426,3 +426,20 @@ impl Rectangle {
 let sq = Rectangle::square(3);
 ```
 
+## Multiple impl Blocks
+
+struct 는 여러개의 `impl` block 을 갖는 것을 허용합니다.
+
+```rust
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+impl Rectangle {
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+```
