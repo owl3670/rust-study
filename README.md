@@ -16,3 +16,4 @@ https://doc.rust-lang.org/book/
 * [Common Programming Concepts](./projects/concept)
 * [Ownership](./projects/ownership)
 * [Structs](./projects/structs)
+* [Enums And Match](./projects/enums_and_match)
