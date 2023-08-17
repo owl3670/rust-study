@@ -39,3 +39,25 @@ const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 
 상수는 선언된 scope 내에서는 프로그램이 동작하는 동안 유효합니다.  
 
+## Shadowing
+
+rust 에서는 이전에 선언한 변수와 같은 이름으로 새 변수를 선언할 수 있습니다.  
+첫 번째 변수는 두 번째 변수에 의해 가려집니다.  
+
+```rust
+fn main() {
+    let x = 5;
+    
+    let x = x + 1;
+
+    {
+        let x = x * 2;
+        println!("The value of x in the inner scope is: {x}"); // 12
+    }
+    
+    println!("The value of x is: {x}"); // 6
+}
+```
+
+이러한 Shadowing 은 `mut` 표시와는 다릅니다.  
+`let` 키워드를 사용하지 않고 이 변수에 재할당을 시도하면 컴파일 에러가 발생하게 됩니다.  
