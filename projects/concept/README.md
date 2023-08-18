@@ -61,3 +61,9 @@ fn main() {
 
 이러한 Shadowing 은 `mut` 표시와는 다릅니다.  
 `let` 키워드를 사용하지 않고 이 변수에 재할당을 시도하면 컴파일 에러가 발생하게 됩니다.  
+
+# Data Types
+
+Rust 에서 모든 값은 어떠한 data type 입니다.  
+Rust 는 정적 type 언어이고, 이 말은 변수의 type 이 컴파일 시간에 알 수 있어야 한다는 것입니다.
+Rust 에서 type 은 scalar 와 conpound 로 분류할 수 있습니다.
