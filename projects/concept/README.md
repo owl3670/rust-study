@@ -72,3 +72,29 @@ Rust 에서 type 은 scalar 와 conpound 로 분류할 수 있습니다.
 
 scalar type 은 단일값을 나타냅니다. Rust 에서는 integer, floating-point, booleans, character 네 가지 기본 type 이 있습니다.  
 
+### Integer Types
+
+integer 는 signed, unsigned 를 표현할 수 있고 bit 수를 표기해서 길이를 나타낼 수 있습니다.  
+
+| Length | Signed | Unsigned |
+|--------|--------|----------|
+| 8bit   | i8     | u8       |
+| 16bit  | i16    | u16      |
+| 32bit  | i32    | u32      |
+| 64bit  | i64    | u64      |
+| 128bit | i128   | u128     |
+| arch   | isize  | usize    |
+
+isize 와 usize 의 길이는 프로그램이 가동되는 컴퓨터의 설계에 따릅니다.  
+
+rust 에서는 integer literal 을 사용하여 자릿수를 쉽게 구분하거나 다른 진법으로 표현 가능합니다.
+
+|Number literals| Example |
+|---|---------|
+|Decimal| `98_222`  |
+|Hex| `0xff`    |
+|Octal| `0o77`    |
+|Binary| `0b1111_0000` |
+|Byte (`u8` only)| `b'A'`   |
+
+rust 에서 integer 기본값은 `i32` 로 설정되어 있습니다.
