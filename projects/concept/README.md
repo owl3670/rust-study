@@ -67,3 +67,8 @@ fn main() {
 Rust 에서 모든 값은 어떠한 data type 입니다.  
 Rust 는 정적 type 언어이고, 이 말은 변수의 type 이 컴파일 시간에 알 수 있어야 한다는 것입니다.
 Rust 에서 type 은 scalar 와 conpound 로 분류할 수 있습니다.
+
+## Scalar Types
+
+scalar type 은 단일값을 나타냅니다. Rust 에서는 integer, floating-point, booleans, character 네 가지 기본 type 이 있습니다.  
+
