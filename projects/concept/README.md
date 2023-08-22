@@ -98,3 +98,17 @@ rust 에서는 integer literal 을 사용하여 자릿수를 쉽게 구분하거
 |Byte (`u8` only)| `b'A'`   |
 
 rust 에서 integer 기본값은 `i32` 로 설정되어 있습니다.
+
+### Floating-Point Types
+
+Rust 는 floating-point 표현을 위한 두 가지 type 이 있습니다.  
+`f32` 와 `f64` 로 각각 32bit, 64bit 의 크기입니다.  
+floating-point type 의 default type 은 `f64` 이고 모든 floating-type 은 signed 입니다.  
+
+```rust
+fn main() {
+    let x = 2.0; // f64
+    
+    let y: f32 = 3.0; // f32
+}
+```
