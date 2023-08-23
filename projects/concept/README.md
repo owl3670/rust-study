@@ -132,3 +132,15 @@ fn main() {
 }
 ```
 
+### The Boolean Type
+
+Rust 에서도 `true`, `false` 를 표현할 수 있는 Boolean Type 을 제공합니다.
+
+```rust
+fn main() {
+    let t = true;
+    
+    let f: bool = false;
+}
+```
+
