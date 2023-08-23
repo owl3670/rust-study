@@ -161,3 +161,47 @@ fn main() {
 ## Compound Types
 
 compound type 은 여러 값은 하나의 type 으로 묶을 수 있으며, Rust 에서는 tuple, array 두 가지가 있습니다.  
+
+### The Tuple Type
+
+tuple 은 다양한 type 을 하나의 compound type 으로 grouping 할 수 있는 일반적인 방법입니다.  
+
+```rust
+fn main(){
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+}
+```
+
+tuple 은 type 명시를 생략할 수도 있습니다.  
+
+```rust
+fn main() {
+    let tup = (500, 6.4, 1);
+}
+```
+
+tuple 에 있는 값은 destructing 을 통해 개별 값으로 분리하여 사용할 수 있습니다.
+
+```rust
+fn main() {
+    let tup = (500, 6.4, 1);
+
+    let (x, y, z) = tup;
+
+    println!("The value of y is: {y}"); // 6.4
+}
+```
+
+tuple 의 값에 직접 접근하여 사용할 수도 있습니다.  
+
+```rust
+fn main() {
+    let x: (i32, f64, u8) = (500, 6.4, 1);
+
+    let five_hundred = x.0;
+
+    let six_point_four = x.1;
+
+    let one = x.2;
+}
+```
