@@ -157,3 +157,7 @@ fn main() {
     let heart_eyed_cat = '😻';
 }
 ```
+
+## Compound Types
+
+compound type 은 여러 값은 하나의 type 으로 묶을 수 있으며, Rust 에서는 tuple, array 두 가지가 있습니다.  
