@@ -205,3 +205,33 @@ fn main() {
     let one = x.2;
 }
 ```
+
+## The Array Type
+
+array 는 tuple 과는 달리 같은 type 의 value 들을 collection 으로 만드는 방법입니다.  
+
+```rust
+fn main(){
+    let a = [1, 2, 3, 4, 5];
+}
+```
+
+array 는 데이터를 힙이 아닌 스택에 할당하거나, 항상 고정된 수의 사이즈를 확보하고 싶을 때 유용합니다.  
+달력과 같이 고정된 길이의 사이즈의 collection 을 만들고 싶다면 array 를 사용하면 됩니다.  
+
+```rust
+let months = ["January", "February", "March", "April", "May", "June", "July",
+"August", "September", "October", "November", "December"];
+```
+
+array 는 type과 길이를 명시 할 수 있습니다.  
+
+```rust
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+```
+
+같은 값이 반복되게 초기화 하는 방법도 존재합니다.  
+
+```rust
+let a = [3; 5];
+```
