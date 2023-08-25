@@ -249,3 +249,34 @@ fn main() {
 }
 ```
 
+#### Invalid Array Element Access
+
+array 의 끝을 넘어서 요소에 접근하려면 어떻게 될까요?  
+
+```rust
+use std::io;
+
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)  // 만약 10을 입력한다면
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];  // index out of bounds 에러가 발생합니다. 
+
+    println!("The value of the element at index {index} is: {element}"); // 코드가 실행되지 않게 됩니다.
+}
+```
+
+위의 코드에서 index 를 입력 받았을 때 array 의 끝 index 보다 높은 번호를 입력 받는다면 array 에서 값에 접근하려 할 때 런타임 에러가 발생합니다.  
+
