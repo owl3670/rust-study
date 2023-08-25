@@ -206,7 +206,7 @@ fn main() {
 }
 ```
 
-## The Array Type
+### The Array Type
 
 array 는 tuple 과는 달리 같은 type 의 value 들을 collection 으로 만드는 방법입니다.  
 
@@ -235,3 +235,17 @@ let a: [i32; 5] = [1, 2, 3, 4, 5];
 ```rust
 let a = [3; 5];
 ```
+
+#### Accessing Array Elements
+
+array 의 값에 접근하기 위해서는 요소의 위치에 해당하는 index 번호를 사용해야 합니다.  
+
+```rust
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+
+    let first = a[0]; // 1
+    let second = a[1];  // 2
+}
+```
+
