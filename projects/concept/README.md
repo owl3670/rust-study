@@ -280,3 +280,20 @@ fn main() {
 
 위의 코드에서 index 를 입력 받았을 때 array 의 끝 index 보다 높은 번호를 입력 받는다면 array 에서 값에 접근하려 할 때 런타임 에러가 발생합니다.  
 
+# Functions
+
+Rust 에서 함수는 `fn` 키워드를 사용하여 선언합니다.  
+
+```rust
+fn main() {
+    println!("Hello, world!");
+    
+    another_function();
+}
+
+fn another_function() {
+    println!("Another function.");
+}
+```
+
+위의 코드에서 `main' 도 함수이며, `another_function` 도 함수입니다.  
