@@ -296,4 +296,22 @@ fn another_function() {
 }
 ```
 
-위의 코드에서 `main' 도 함수이며, `another_function` 도 함수입니다.  
+위의 코드에서 `main' 도 함수이며, `another_function` 도 함수입니다. 
+
+## Parameters
+
+함수는 parameter 를 가질 수 있습니다.  
+parameter 는 함수의 signature 에서 정의되며, 함수의 body 에서 사용할 수 있습니다.  
+함수의 parameter 로 전달되는 값은 argument 라고 부릅니다.  
+
+```rust
+fn main() {
+    another_function(5);
+}
+
+fn another_function(x: i32) {
+    println!("The value of x is: {x}");
+}
+```
+
+함수의 signature 에서 parameter 는 항상 type 과 함께 명시되어야 합니다.  
