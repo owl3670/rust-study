@@ -315,3 +315,34 @@ fn another_function(x: i32) {
 ```
 
 함수의 signature 에서 parameter 는 항상 type 과 함께 명시되어야 합니다.  
+
+## Statements and Expressions
+
+Rust 에서 함수의 body 는 statement 와 expression 으로 이루어져 있습니다.  
+statement 는 어떠한 값을 반환하지 않는 문장입니다.
+expression 은 어떠한 결과 값을 반환하는 문장입니다.  
+예시를 확인해 보겠습니다.  
+
+```rust
+fn main(){
+    let y =6; // statement
+}
+```
+
+위의 코드에서 `let y = 6` 은 statement 로 반환값이 없는 문장입니다.
+
+```rust
+fn main(){
+    let y = {
+        let x = 3;
+        x + 1 
+    };
+
+    println!("The value of y is: {y}"); // 4
+}
+```
+
+expression 은 값으로 평가되는 문장으로 위의 코드에서 `x + 1` 은 expression 입니다.  
+심지어 `let x = 3;` 에서 3 자체도 statement 에 속한 expression 이며, 함수를 호출하는 것, macro를 호출하는 것 도 expression 입니다.  
+위의 코드에서는 중괄호로 묶은 block 이 보이는데 이 또한 expression 이기에 `y` 변수에 결과값을 담아 사용할 수 있는 것입니다.  
+expression 은 마지막에 세미콜론을 붙이지 않습니다.
