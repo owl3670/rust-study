@@ -346,3 +346,23 @@ expression 은 값으로 평가되는 문장으로 위의 코드에서 `x + 1` �
 심지어 `let x = 3;` 에서 3 자체도 statement 에 속한 expression 이며, 함수를 호출하는 것, macro를 호출하는 것 도 expression 입니다.  
 위의 코드에서는 중괄호로 묶은 block 이 보이는데 이 또한 expression 이기에 `y` 변수에 결과값을 담아 사용할 수 있는 것입니다.  
 expression 은 마지막에 세미콜론을 붙이지 않습니다.
+
+## Functions with Return Values
+
+Rust 에서 함수는 반환값을 가질 수 있습니다.  
+함수의 반환값의 이름을 명시해야 할 필요는 없지만 반환값의 type 은 명시해야 합니다.  
+type 은 `->` 를 사용하여 명시합니다.  
+rust 에서 값을 반환할 때는 `return` 키워드를 사용하여도 되지만, 대부분의 경우 마지막 expression 이 반환값이 됩니다.
+
+```rust
+fn main() {
+    let x = five();
+
+    println!("The value of x is: {x}"); // 5
+}
+
+fn five() -> i32 {
+    5  // return 이 생략되었으나 반환값으로 됨
+}
+```
+
