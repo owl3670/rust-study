@@ -377,3 +377,7 @@ fn main() {
     let lucky_number = 7; // 7 은 행운의 숫자로 여겨 집니다.
 }
 ```
+
+# Control Flow
+
+Rust 에서는 `if` 표현식, `loop` 표현식, `while` 표현식, `for` 표현식 등을 사용하여 프로그램의 흐름을 제어할 수 있습니다.
