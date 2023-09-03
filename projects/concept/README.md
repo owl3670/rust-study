@@ -381,3 +381,24 @@ fn main() {
 # Control Flow
 
 Rust 에서는 `if` 표현식, `loop` 표현식, `while` 표현식, `for` 표현식 등을 사용하여 프로그램의 흐름을 제어할 수 있습니다.
+
+## if Expressions
+
+Rust 에서는 `if` 표현식을 사용하여 조건에 따라 프로그램의 흐름을 제어할 수 있습니다.  
+
+```rust
+fn main() {
+    let number = 3;
+
+    if number < 5 {
+        println!("condition was true");
+    } else {
+        println!("condition was false");
+    }
+}
+```
+
+위의 코드에서 `number` 가 5 보다 작다면 `condition was true` 가 출력되고, 그렇지 않다면 `condition was false` 가 출력됩니다.  
+number 는 3 으로 초기화되기에 `condition was true` 가 출력됩니다.  
+if expresson은 조건이 항상 있어야 하며, 조건문은 반드시 boolean type 의 값을 반환하는 expression 이어야 합니다.  
+선택적으로 if 문의 조건이 `false` 일 때 실행할 else 문을 추가할 수 있습니다.  
