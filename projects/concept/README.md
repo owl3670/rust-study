@@ -402,3 +402,26 @@ fn main() {
 number 는 3 으로 초기화되기에 `condition was true` 가 출력됩니다.  
 if expresson은 조건이 항상 있어야 하며, 조건문은 반드시 boolean type 의 값을 반환하는 expression 이어야 합니다.  
 선택적으로 if 문의 조건이 `false` 일 때 실행할 else 문을 추가할 수 있습니다.  
+
+## Handling Multiple Conditions with else if
+
+`if` 와 'else' 의 성격이 혼합된 `else if` 를 사용할 수 있습니다.
+
+```rust
+fn main() {
+    let number = 6;
+
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
+    } else {
+        println!("number is not divisible by 4, 3, or 2");
+    }
+}
+```
+
+이 코드가 실행되면 각 `if` 표현식을 차례로 검사하다 조건이 `true` 인 경후 해당 block 안의 코드를 실행시킵니다.  
+위의 코드 에서는 첫 번째로 `true` 인 block 만을 실행하고 나머지는 확인하지 않습니다.  
