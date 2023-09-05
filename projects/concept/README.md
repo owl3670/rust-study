@@ -425,3 +425,32 @@ fn main() {
 
 이 코드가 실행되면 각 `if` 표현식을 차례로 검사하다 조건이 `true` 인 경후 해당 block 안의 코드를 실행시킵니다.  
 위의 코드 에서는 첫 번째로 `true` 인 block 만을 실행하고 나머지는 확인하지 않습니다.  
+
+## Using if in a let Statement
+
+`if` 는 expression 이기 때문에 해당 결과 값을 `let` 변수에 담을 수 있습니다.  
+
+```rust
+fn main() {
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("The value of number is: {number}");
+}
+```
+
+위의 코드에서 `if` expression 의 결과에 따라 코드 블록이 실행되며, 그 안의 expression 도 실행되어 결과값이 반환되게 됩니다.  
+주의할 점은 각 블록의 결과값의 type 은 모두 동일해야 합니다.  
+아래와 같은 코드는 에러를 발생시키게 됩니다.  
+
+```rust
+fn main() {
+    let condition = true;
+
+    let number = if condition { 5 } else { "six" }; // 각 블록의 결과값의 type 이 다르다
+
+    println!("The value of number is: {number}");
+}
+```
+
+Rust 의 컴파일러는 컴파일 시에 변수가 어떤 type 인지 확실히 알아야 합니다.
