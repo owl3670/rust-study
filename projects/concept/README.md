@@ -403,7 +403,7 @@ number 는 3 으로 초기화되기에 `condition was true` 가 출력됩니다.
 if expresson은 조건이 항상 있어야 하며, 조건문은 반드시 boolean type 의 값을 반환하는 expression 이어야 합니다.  
 선택적으로 if 문의 조건이 `false` 일 때 실행할 else 문을 추가할 수 있습니다.  
 
-## Handling Multiple Conditions with else if
+### Handling Multiple Conditions with else if
 
 `if` 와 'else' 의 성격이 혼합된 `else if` 를 사용할 수 있습니다.
 
@@ -426,7 +426,7 @@ fn main() {
 이 코드가 실행되면 각 `if` 표현식을 차례로 검사하다 조건이 `true` 인 경후 해당 block 안의 코드를 실행시킵니다.  
 위의 코드 에서는 첫 번째로 `true` 인 block 만을 실행하고 나머지는 확인하지 않습니다.  
 
-## Using if in a let Statement
+### Using if in a let Statement
 
 `if` 는 expression 이기 때문에 해당 결과 값을 `let` 변수에 담을 수 있습니다.  
 
@@ -454,3 +454,9 @@ fn main() {
 ```
 
 Rust 의 컴파일러는 컴파일 시에 변수가 어떤 type 인지 확실히 알아야 합니다.
+
+## Repetition with Loops
+
+Code block 을 두 번 이상 실행하는 것이 필요한 경우가 많습니다. 이럴 때 Code 를 반복 실행 시킬 수 있는 loop 를 사용할 수 있습니다.  
+Rust 에서는 loop 의 종류로 `loop`, `while`, `for` 세 가지가 존재합니다.  
+
