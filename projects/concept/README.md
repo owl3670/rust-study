@@ -460,3 +460,34 @@ Rust 의 컴파일러는 컴파일 시에 변수가 어떤 type 인지 확실히
 Code block 을 두 번 이상 실행하는 것이 필요한 경우가 많습니다. 이럴 때 Code 를 반복 실행 시킬 수 있는 loop 를 사용할 수 있습니다.  
 Rust 에서는 loop 의 종류로 `loop`, `while`, `for` 세 가지가 존재합니다.  
 
+### Repeating Code with loop
+
+`loop` 키워드는 block 안의 코드를 계속 실행시켜 달라는 것을 나타 냅니다.  
+
+```rust
+fn main() {
+    loop {
+        println!("again!");
+    }
+}
+```
+
+위의 코드를 실행 시키면 무한히 again! 을 출력하기에 ctrl-c 를 통해 중간에 실행을 중단하면 loop 가 중단됩니다.  
+`break` 키워드를 사용하여 loop 의 실행을 중지할 수 있습니다.  
+`continue` 키워드를 사용하면 이후 코드를 스킵하고 loop 의 다음 반복으로 넘어 가게 됩니다.
+
+```rust
+fn main() {
+    let mut counter = 0;
+    
+    loop {
+        counter += 1;
+        
+        if counter == 10 {
+            break
+        } else {
+            continue // 굳이 필요 없으나 예시를 위해 넣었습니다.
+        }
+    }
+}
+```
