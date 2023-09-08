@@ -491,3 +491,26 @@ fn main() {
     }
 }
 ```
+
+### Returning Values from Loops
+
+`loop` 는 스레드가 작업을 완료했는지 확인하는 등에 사용할 수 있습니다.  
+여기서 해당 작업의 결과를 loop 밖으로 전달해야 할 수도 있는데 이때 `break` expression 뒤에 반환할 값을 추가하면 됩니다.  
+
+```rust
+fn main() {
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {result}"); // The result is 20
+}
+```
+
+위의 코드에서 counter 가 10 이 될 때 `break` expression 이 실행 되면서 20 이라는 값이 반환되게 됩니다.
