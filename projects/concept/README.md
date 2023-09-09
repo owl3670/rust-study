@@ -514,3 +514,35 @@ fn main() {
 ```
 
 위의 코드에서 counter 가 10 이 될 때 `break` expression 이 실행 되면서 20 이라는 값이 반환되게 됩니다.
+
+### Loop Labels to Disambiguate Between Multiple Loops
+
+loop 안에서 `break` 나 `continue` 를 만나면 가장 안쪽의 loop 를 빠져나가거나 다음 반복으로 넘어가게 됩니다.  
+만얀 `loop label` 을 적용한다면 빠져가나거나 다음으로 반복할 loop 를 지정할 수 있습니다.  
+
+```rust
+fn main() {
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+    println!("End count = {count}");
+}
+```
+
+위의 코드에서 `break 'counting_up;` 은 `counting_up` 이라는 loop 를 빠져나가게 됩니다.
+
