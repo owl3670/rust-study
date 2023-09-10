@@ -546,3 +546,22 @@ fn main() {
 
 위의 코드에서 `break 'counting_up;` 은 `counting_up` 이라는 loop 를 빠져나가게 됩니다.
 
+### Conditional Loops with while
+
+조건에 따라서 loop 의 실행 여부를 판단하고 싶을 때가 있습니다.  
+그럴때는 `while` 을 사용하면 됩니다.  
+`while`은 조건이 `true` 일 때만 block 을 실행합니다.  
+
+```rust
+fn main() {
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{}!", number);
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+```
