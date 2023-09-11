@@ -565,3 +565,55 @@ fn main() {
     println!("LIFTOFF!!!");
 }
 ```
+
+### Looping Through a Collection with for
+
+array 와 같은 collection 의 요소를 반복할 때 `while` 을 사용할 수 있습니다.  
+
+```rust
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+    let mut index = 0;
+
+    while index < 5 {
+        println!("the value is: {}", a[index]);
+
+        index += 1;
+    }
+}
+```
+
+그러나 이러한 접근 방식은 index 값이 올바즈 않으면 프로그램이 panic 상태에 빠질 수 있습니다.  
+이러한 경우 대안으로 `for` 를 사용하여 더 간결하게 할 수 있습니다.  
+
+```rust
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
+```
+
+위의 코드는 `while` 로 작성했던 코드와 동일한 출력을 보입니다.  
+그러나 while 과 달리 array 의 끝을 넘어갈 위험이 없습니다.  
+`for` loop 는 가장 일반적으로 사용되는 loop 구조입니다.  
+다음은 `for` 를 사용하는 몇 가지 사용 예시입니다.
+
+```rust
+fn main() {
+    // 1~3 출력
+    for number in 1..4 {
+        println!("{number}!");
+    }
+
+    // 3~1 출력
+    for number in (1..4).rev() {
+        println!("{number}!")
+    }
+
+    println!("LIFTOFF!!!");
+}
+```
+
