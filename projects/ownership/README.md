@@ -554,3 +554,6 @@ assert_eq!(slice, &[2, 3]);
 위의 코드에서 슬라이스의 type은 `&[i32]` 입니다.  
 string slice 와 동일한 방식으로 작동하며, 이러한 slice 는 다른 모든 종류의 collection 에 사용할 수 있습니다.
 
+---
+
+* [목차로](../../README.md)
