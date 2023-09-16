@@ -92,3 +92,19 @@ parameter 는 어떠한 값을 받을 것인지 미리 정의하는 것이라면
 위의 코드 마지막 글자로 세미콜론 (`;`)이 들어가는 것을 볼 수 있습니다.  
 이는 expression 의 끝을 의미하는 것으로 즉 다음 expression 시작과 구분짓는 용도입니다.  
 Rust code 의 대부분의 끝 글자는 세미콜론으로 마무리 됩니다.  
+
+## Compiling and Running Are Separate Steps
+
+Rust 프로그램을 실행하기 전에 반드시 compiler 에서 compile 단계를 거쳐야 합니다.  
+Rust compiler 는 `rustc` 라는 명령어로 실행할 수 있습니다.  
+
+```bash
+$ rustc main.rs
+```
+
+위의 명령어를 실행하면 `main.rs` 파일을 compile 하여 윈도우 환경에서는 `main.exe` 파일이 생성되고 리눅스, 맥 환경에서는 파일 이름이 `main` 인 binary file 이 생성됩니다.
+각 운영체제 환경에 맞게 binary file 을 실행하면 `Hello, world!` 라는 문자열이 출력됩니다. 
+
+---
+
+* [목차로](../../README.md)
