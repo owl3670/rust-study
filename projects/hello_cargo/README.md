@@ -43,6 +43,40 @@ fn main() {
 }
 ```
 
+## Building and Running a Cargo Project
+
+Cargo 를 사용하여 프로젝트를 build 하고 실행하는 명령어는 다음과 같습니다.  
+
+```bash
+$ cargo build
+```
+
+위의 명령어를 실행하면 _target/debug_ 디렉토리에 _hello_cargo_ 라는 이름의 실행파일이 생성됩니다.  
+default build 는 debug build 입니다.  
+
+`cargo build` 를 처음 실행하면 _Cargo.lock_ 파일도 생성됩니다.  
+이 파일은 프로젝트가 의존하는 crate 의 정확한 버전을 저장합니다.  
+
+compile 과 함께 실행파일을 실행하고 싶다면 다음과 같이 입력할 수 있습니다.  
+
+```bash
+$ cargo run
+```
+
+`cargo run` 이 `cargo build` 에 비해 더 간편하고 기억하기 쉬워 많은 개발자들이 사용합니다.  
+
+`cargo run` 은 source file 이 수정되었거나 처음 실행때만 compile 을 하고 실행파일을 실행합니다.  
+만약 source file 이 변경되지 않았을 때 `cargo run` 을 실행하면 compile 을 생략합니다.  
+
+Cargo 는 `cargo check` 라는 명령어를 통해 빠르게 code 를 검사할 수 있습니다.  
+
+```bash
+$ cargo check
+```
+
+`cargo check`는 실행파일을 만들지 않기 때문에 빠르게 동작합니다.  
+그래서 code 가 compile 가능한지 여부만 빠르게 판단할 때 사용할 수 있습니다.  
+
 ---
 
 * [목차로](../../README.md)
