@@ -77,6 +77,17 @@ $ cargo check
 `cargo check`는 실행파일을 만들지 않기 때문에 빠르게 동작합니다.  
 그래서 code 가 compile 가능한지 여부만 빠르게 판단할 때 사용할 수 있습니다.  
 
+## Building for Release
+
+project 를 release 할 준비가 되면 `cargo build --release` 명령어를 사용하여 release build 를 할 수 있습니다.  
+이 명령어를 사용하면 _target/debug_ 디렉토리가 아닌 _target/release_ 디렉토리에 실행파일이 생성됩니다.  
+release build 는 debug build 보다 더 오래 걸리지만 최적화를 하기에 실행파일의 성능이 더 좋습니다.  
+
+## Cargo as Convention
+
+Rust 개발자들은 Cargo 를 사용하여 프로젝트를 관리하는 것을 권장합니다.  
+Cargo 를 사용하면 프로젝트의 의존성을 쉽게 관리할 수 있고, build, test, run 등의 명령어를 쉽게 사용할 수 있습니다.
+
 ---
 
 * [목차로](../../README.md)
