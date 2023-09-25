@@ -63,6 +63,40 @@ fn main(){
     println!("Please input your guess.");
 ```
 
+## Storing Values with Variables
+
+user input 을 저장하기 위해 변수를 생성했습니다.  
+
+```rust
+    let mut guess = String::new();
+```
+
+`let` 구문은 변수를 생성하기 위해 사용합니다.  
+다른 사용 방법에 대해서도 확인해 보겠습니다.  
+
+```rust
+let apples = 5;
+```
+
+`apples` 라는 이름의 변수를 생성하면서 5의 값을 할당하고 있습니다.  
+Rust 는 기본적으로 변수가 불변입니다. 이는 한번 값을 할당하면 변경이 불가능하다는 뜻입니다.  
+만약 변경 가능한 변수를 만들고 싶다면 `mut` 키워드를 붙여주면 됩니다.  
+
+```rust
+let apples = 5; // immutable
+let mut bannas = 5; // mutable
+```
+
+guessing game 으로 돌아와서 `let mut guess` 는 `guess`라는 이름의 변경가능한 변수를 만든다는 구문인 것을 알 수 있습니다.  
+euqal sign(`=`) 는 Rust 에게 변수에 어떤값을 할당하길 원한다는 것을 알려주는 것입니다.  
+그 오른쪽에 `String::new` 함수는 `String` 의 새로운 객체를 반환하는 함수입니다.  
+
+`::new` 에서 `::` 는 `new`가 String type 연관 함수임을 나타냅니다.  
+연관 함수는 특정 type 에서 구현되는 함수입니다.  
+많은 type 에서 해당 type 의 새로운 값을 만들어내는 함수로 `new` 를 사용합니다.  
+
+`let mut guess = String::new()` 코드를 전체적으로 다시 분석한다면 변경가능한 `guess` 변수에 새로운 `String` 객체를 할당한다는 의미입니다.
+
 ---
 
 * [목차로](../../README.md)
