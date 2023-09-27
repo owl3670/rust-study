@@ -97,6 +97,20 @@ euqal sign(`=`) 는 Rust 에게 변수에 어떤값을 할당하길 원한다는
 
 `let mut guess = String::new()` 코드를 전체적으로 다시 분석한다면 변경가능한 `guess` 변수에 새로운 `String` 객체를 할당한다는 의미입니다.
 
+## Receiving User Input
+
+`io` 모듈안에있는 `stdin` 함수를 통해 user 의 input 을 받을 수 있습니다.  
+
+```rust
+    io::stdin()
+        .read_line(&mut guess)
+```
+
+`stdin` 함수는 `std::io::Stdin` 객체를 반환 합니다.  
+반환된 객체안의 `read_line` 함수를 통해 user 의 input을 받아 `guess` 변수에 할당합니다.  
+`&` 지시자는 _reference_ 를 의미합니다. _refernece_ 는 memory 의 복사 없이 data 에 접근 하는 방법입니다.  
+_reference_ 또한 default 가 불변이기에 `&mut` 로 변경 가능한 _reference_ 를 표시하여 함수에 전달합니다.  
+
 ---
 
 * [목차로](../../README.md)
