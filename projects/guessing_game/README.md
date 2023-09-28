@@ -111,6 +111,30 @@ euqal sign(`=`) 는 Rust 에게 변수에 어떤값을 할당하길 원한다는
 `&` 지시자는 _reference_ 를 의미합니다. _refernece_ 는 memory 의 복사 없이 data 에 접근 하는 방법입니다.  
 _reference_ 또한 default 가 불변이기에 `&mut` 로 변경 가능한 _reference_ 를 표시하여 함수에 전달합니다.  
 
+## Handling Potential Failure with the `Result`
+
+다음의 코드를 한번 살펴보겠습니다.  
+
+```rust
+io::stdin()
+    .read_line(&mut guess)
+    .expect("Failed to read line");
+```
+
+`read_line` 함수는 user 의 입력을 문자열로 전달도 하지만 `io::Result` 를 반환하기도 합니다.  
+`Result` 는 `enum` type 입니다.  
+`enum` 은 미리 정해둔 여러개의 값 후보를 가질 수 있는 type입니다.  
+
+`Result` 는 `Ok` 와 `Err` 라는 두가지 variant 를 가집니다.  
+`Ok` variant 는 작업이 성공적으로 완료되었음을 의미하고, `Err` variant 는 작업이 실패했음을 의미합니다.  
+`Result` 객체는 또한 `expect` 함수를 가지고 있습니다.  
+`Result` 가 `Err` 값을 가진다면 `expect` 함수는 인자 값으로 전달된 값을 출력합니다.  
+`Result` 가 `Ok` 값을 가진다면 `expect` 함수는 `Ok` 값을 반환합니다.  
+
+만약 `epect` 함수를 사용하지 않는다면 warning 이 발생합니다.  
+
+
+
 ---
 
 * [목차로](../../README.md)
