@@ -133,7 +133,24 @@ io::stdin()
 
 만약 `epect` 함수를 사용하지 않는다면 warning 이 발생합니다.  
 
+## Printing Values with println! Placeholders
 
+`println!` 매크로는 문자열을 출력할 때 사용합니다.  
+
+```rust
+    println!("You guessed: {guess}");
+```
+
+`println!` 매크로는 `{}` 를 사용하여 문자열에 값을 삽입할 수 있습니다.  
+`{}` 를 _placeholder_ 라고 부릅니다.  
+expression 의 결과를 바로 출력하고 싶다면 빈 중괄호를 넣고 쉼표로 구분된 expression 을 넣으면 됩니다.  
+
+```rust
+let x = 5;
+let y = 10;
+
+println!("x = {x} and y + 2 = {}", y + 2);
+```
 
 ---
 
