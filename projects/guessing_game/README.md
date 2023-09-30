@@ -152,6 +152,19 @@ let y = 10;
 println!("x = {x} and y + 2 = {}", y + 2);
 ```
 
+## Testing the First Part of the Game
+
+지금까지 작성한 코드를 실행해 보겠습니다.  
+
+```bash
+$ cargo run
+```
+
+# Generating a Secret Number
+
+지금까지 작성한 코드는 user 의 input 을 받고 출력하는 기능을 가지고 있습니다.  
+다음으로는 user 가 맞춰야 할 숫자를 랜덤으로 생성하는 기능을 추가해 보겠습니다.  
+
 ---
 
 * [목차로](../../README.md)
