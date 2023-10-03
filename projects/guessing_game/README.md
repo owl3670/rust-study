@@ -165,6 +165,31 @@ $ cargo run
 지금까지 작성한 코드는 user 의 input 을 받고 출력하는 기능을 가지고 있습니다.  
 다음으로는 user 가 맞춰야 할 숫자를 랜덤으로 생성하는 기능을 추가해 보겠습니다.  
 
+## Using a Crate to Get More Functionality
+
+Rust 에서 crate 는 소스 코드 파일의 collection 입니다.  
+`rand` crate 는 _library crate_ 이며, 다른 파일에서 사용되지 않고는 혼자서 실행될 수 없는 crate 입니다.  
+cargo 에서 crate 를 관리하기 위해서 `Cargo.toml` 파일을 사용합니다.  
+`Cargo.toml` 파일에 아래와 같이 `rand` crate 를 추가합니다.  
+
+```toml
+[dependencies]
+rand = "0.8.5"
+```
+
+위에서 `rand` crate 의 버전을 0.8.5 로 지정했는데 이는 `^0.8.5` 의 줄임말입니다.  
+이는 0.8.5 이상, 0.9.0 미만의 버전을 사용하겠다는 의미입니다.  
+
+`Cargo.toml` 파일에 `rand` crate 를 추가한 후에는 `cargo build` 명령어를 실행하여 crate 를 다운로드 받고 빌드합니다.  
+
+```bash
+$ cargo build
+```
+
+cargo 는 [Crates.io](https://crates.io/) 에서 의존성이 있는 _registry_ 를 찾아서 다운로드 받습니다.  
+_registry_ 가 업데이트 되면 cargo 는 아직 다운로드되지 않은 모든 crate 를 다운로드 합니다.
+즉 cargo build 를 하고 나시면 의존성이 있는 다른 crate 들도 함께 다운로드 받고 빌드합니다.
+
 ---
 
 * [목차로](../../README.md)
