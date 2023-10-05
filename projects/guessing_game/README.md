@@ -190,6 +190,13 @@ cargo 는 [Crates.io](https://crates.io/) 에서 의존성이 있는 _registry_ 
 _registry_ 가 업데이트 되면 cargo 는 아직 다운로드되지 않은 모든 crate 를 다운로드 합니다.
 즉 cargo build 를 하고 나시면 의존성이 있는 다른 crate 들도 함께 다운로드 받고 빌드합니다.
 
+### Ensuring Reproducible Builds with the _Cargo.lock_ File
+
+프로젝트를 처음 빌드하면 cargo 는 `Cargo.lock` 파일을 생성합니다.  
+이 파일은 프로젝트가 의존하는 crate 의 정확한 버전을 저장합니다.  
+다음에 프로젝트를 다시 빌드한다면 `Cargo.lock` 파일을 확인하여 지정된 버전을 사용합니다.  
+이렇게 하면 처음 빌드시의 환경과 동일한 버전의 crate 들로만 프로젝트를 빌드할 수 있습니다.  
+
 ---
 
 * [목차로](../../README.md)
