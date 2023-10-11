@@ -203,6 +203,37 @@ Crate 를 update 하고 싶다면 `update` 키워드를 사용해서 _Cargo.lock
 이때 버전 정책은 _Cargo.toml_ 에서 기입된 정보에 기반합니다.  
 update 후에는 _Cargo.lock_ 파일에 새로운 버전들이 기입됩니다.  
 
+## Generating a Random Number
+
+`rand` crate 를 프로젝트에 포함하였으니 추측해야 할 번호를 랜덤하게 생성할 수 있게 되었습니다.  
+
+```rust
+use std::io;
+use rand::Rng;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
+
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    println!("You guessed: {guess}");
+}
+```
+
+먼저 `use rand::Rng;` 코드를 추가하여 랜던 번호 생성기가 구현되어 있는 `Rng` trait 을 사용할 수 있도록 합니다.  
+이제 `rand::thread_rng` 함수를 통해 난수 생성기를 만들 수 있습니다.  
+난수 생성기에서 `gen_range` 함수에 `1..=100` 범위 표현식을 전달하여 호출하게 되면 1 부터 100 사이의 숫자를 랜덤하게 생성할 수 있습니다.  
+
 ---
 
 * [목차로](../../README.md)
