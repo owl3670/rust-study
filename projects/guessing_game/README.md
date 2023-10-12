@@ -234,6 +234,84 @@ fn main() {
 이제 `rand::thread_rng` 함수를 통해 난수 생성기를 만들 수 있습니다.  
 난수 생성기에서 `gen_range` 함수에 `1..=100` 범위 표현식을 전달하여 호출하게 되면 1 부터 100 사이의 숫자를 랜덤하게 생성할 수 있습니다.  
 
+# Comparing the Guess to the Secret Number
+
+이제 랜덤한 번호를 생성하고 유저의 input 을 받을 수 있기에 두 값을 비교해볼 수 있습니다.  
+
+```rust
+use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    // --snip--
+
+    println!("You guessed: {guess}");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
+}
+```
+
+먼저 우리는 비교를 위한 Type 을 표준 라이브러리에서 가져옵니다. `use std::cmp::Ordering;`  
+`Ordering` type은 enum 으로 값의 비교에 대한 결과 값을 읽기 쉽게 합니다.  
+
+`guess` 변수의 `cmp` 함수를 호출하면서 `&secret_number` 값을 인자로 넘기면 두 값의 비교 결과를 `Ordering` type 으로 반환 받을 수 있습니다.  
+
+`match` 표현식은 주어진 값을 각 arm 의 패턴과 비교하여 값이 일치하는 arm 의 실행코드를 실행합니다.  
+위에서 만약 `guess` 의 값이 `secret_number` 의 값보다 작다면 `"Too small!"` 이 출력될 것입니다.  
+
+위의 코드를 실행하여 결과를 확인하려한다면 에러가 발생할 것이며, 이는 Rust 가 강한 정적 type 시스템이기 때문입니다.  
+이전 단계에서 우리는 `guess` 변수를 만들때 `let mut guess = String::new()` 로 만들었습니다.  
+즉 `guess` 의 type 은 `String` type 입니다. 
+`secret_number` 는 number type 인데 별도로 type 을 지정하지 않았기에 default type 인 `i32` 입니다.  
+
+우리는 이를 해결하기 위해 `String` type 을 변환해야 합니다.
+
+```rust
+    // --snip--
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+
+    println!("You guessed: {guess}");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
+```
+
+새로 추가된 line 은 아래와 같습니다.  
+
+```rust
+let guess: u32 = guess.trim().parse().expect("Please type a number!");
+```
+
+우리는 이미 위에서 `guess` 변수를 만들었는데 이래도 괜찮을까요?  
+다행히 Rust 에서는 _Shadowing_ 이라는 개념이 있어서 이전의 변수를 새로운 변수가 가려줍니다.  
+
+새로운 `guess` 변수는 `guess.trim().parse()` 의 결과 값과 bind 됩니다.  
+`String` 객체의 `trim` 메서드는 시작과 끝에 있는 공백을 제거해줍니다.  
+유저는 입력을 위해 엔터를 입력하는데 이때 이미 값과 함께 `\n` (Windows 에서는 `\r\n`) 이라는 "newline" 을 의미하는 문자도 포함됩니다.  
+`trim` 메서드롤 통해 이러한 필요없는 값들을 제거합니다.  
+
+`parse` 메서드는 string 에서 다른 type 으로 변환합니다.  
+변수 선언부에서 `: u32` 를 통해 type 을 명확히 하면 해당 type 으로 자동으로 변환하게 됩니다.  
+
+추가적으로 `u32` annotaion 을 통해 Rust 는 `guess` 값과 비교되는 `secret_number` 도 `u32` 여야 한다고 추론하게 됩니다.  
+
+유저의 입력으로 숫자로 변환할 수 없는 값이 들어온다면 `expect` 메서드에서 주어진 문자열을 출력하고 종료됩니다.  
+
 ---
 
 * [목차로](../../README.md)
