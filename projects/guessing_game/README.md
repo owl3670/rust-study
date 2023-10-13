@@ -312,6 +312,33 @@ let guess: u32 = guess.trim().parse().expect("Please type a number!");
 
 유저의 입력으로 숫자로 변환할 수 없는 값이 들어온다면 `expect` 메서드에서 주어진 문자열을 출력하고 종료됩니다.  
 
+# Allowing Multiple Guesses with Looping
+
+`loop` 를 사용하여 유저가 번호를 반복적으로 입력할 수 있게 만들 수 있습니다.
+
+```rust
+    // --snip--
+
+    println!("The secret number is: {secret_number}");
+
+    loop {
+        println!("Please input your guess.");
+
+        // --snip--
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => println!("You win!"),
+        }
+    }
+}
+```
+
+이제 유저의 입력이 숫자가 아니여서 `parse` 에서 error 가 발생하거나 ctrl-c 로 프로그램을 종료할 때 까지 계속해서 숫자를 입력받을 수 있는 프로그램을 만들었습니다.
+
+
+
 ---
 
 * [목차로](../../README.md)
