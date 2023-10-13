@@ -358,7 +358,69 @@ let guess: u32 = guess.trim().parse().expect("Please type a number!");
 
 이제 유저가 맞는 번호를 입력하면 `break` 를 통해 `loop` 를 빠져나가고 프로그램이 종료되게 됩니다.  
 
+## Handling Invalid Input
 
+유저가 숫자가 아닌 값을 입력하더라도 경고만 하고 프로그램이 종료되지 않게 할 수도 있습니다.  
+
+```rust
+        // --snip--
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
+        println!("You guessed: {guess}");
+
+        // --snip--
+```
+
+`expect` 대신 `match` 표현식을 사용하여 `Result` type 의 variant 값에 따라 분기하게 만들 었습니다.  
+만약 유저의 입력값이 숫자가 아니여서 `Result` 의 값이 `Err` 가 된다면 `continue` 를 실행하여 `loop` 의 시작으로 다시 돌아가게 합니다.  
+
+마지막으로 `secret_number` 의 값을 출력하는 코드를 지우면... 축하합니다! 실제로 잘 작동하는 숫자 맞추기 게임을 개발하셨습니다.
+
+```rust
+use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    loop {
+        println!("Please input your guess.");
+
+        let mut guess = String::new();
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
+        println!("You guessed: {guess}");
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+    }
+}
+```
 
 ---
 
