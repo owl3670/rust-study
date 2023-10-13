@@ -337,6 +337,27 @@ let guess: u32 = guess.trim().parse().expect("Please type a number!");
 
 이제 유저의 입력이 숫자가 아니여서 `parse` 에서 error 가 발생하거나 ctrl-c 로 프로그램을 종료할 때 까지 계속해서 숫자를 입력받을 수 있는 프로그램을 만들었습니다.
 
+## Quitting After a Correct Guess
+
+번호를 맞출때까지 입력을 무한히 받다가 번호를 맞췄을 때 `loop` 를 빠져나가고 프로그램을 종료하게 만들어 봅시다.
+
+```rust
+        // --snip--
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+    }
+}
+```
+
+이제 유저가 맞는 번호를 입력하면 `break` 를 통해 `loop` 를 빠져나가고 프로그램이 종료되게 됩니다.  
+
 
 
 ---
