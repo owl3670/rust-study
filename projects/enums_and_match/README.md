@@ -108,6 +108,47 @@ let m = Message::Write(String::from("hello"));
 m.call();
 ```
 
+## The `Option` Enum and Its Advantages Over Null Values
+
+Rust 에는 `Option` 이라는 enum 이 표준 library 에 정의되어 있습니다.  
+`Option` type 은 어떤 값일 수도 있고 아무것도 아닐 수도 있는 값을 표현할 때 유용합니다.  
+
+예를 들어 비어 있지 않은 list 의 첫 번째 항목을 요청하면 값을 얻게 됩니다. 반대로 비어있는 list의 첫 번째 항목을 요청하면 아무것도 얻지 못합니다.  
+이러한 개념을 type system 으로 표현하면 컴파일러가 처리해야 할 모든 경우를 처리했는지 확인할 수 있습니다.  
+Rust 에서는 다른 언어에 있는 null의 개념이 없기에 `Option` enum 을 사용하여 null 의 개념을 표현합니다.  
+
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+
+`<T>` 구문은 generic type의 parameter 로 나중에 더 자세히 다루겠습니다.  
+`Option<T>` enum 은 `Some` variant 와 `None` variant 를 가지고 있습니다.  
+`Some` variant 는 `T` type 의 data 를 가지고 있으며, `None` variant 는 data 를 가지고 있지 않습니다.  
+
+```rust
+let some_number = Some(5);
+let some_string = Some("a string");
+
+let absent_number: Option<i32> = None;
+```
+
+`Option` type은 위와 같이 사용할 수 있습니다.  
+그런데 이러한 방식이 null 을 사용하는 것보다 안전할까요?  
+
+```rust
+let x: i8 = 5;
+let y: Option<i8> = Some(5);
+
+let sum = x + y;
+```
+
+위의 코드는 `i8` 타입과 `Option<i8>` 타입을 더하려고 하기 때문에 컴파일 에러가 발생합니다.  
+`Option<T>` 타입은 값이 있거나 없는 것을 의미히며, 이때 값이 있다면 명시적으로 type 을 변경하여 사용해야 합니다.  
+즉 `Option<T>` 타입이 명시되어 있을때만 값이 있는지 없는지 여부를 신경쓰면 되며, 해당 타입의 값을 다룰 때 `None` 인 경우에 대해 명시적으로 처리해야 합니다.  
+
 ---
 
 * [목차로](../../README.md)
