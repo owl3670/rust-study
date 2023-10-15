@@ -149,6 +149,56 @@ let sum = x + y;
 `Option<T>` 타입은 값이 있거나 없는 것을 의미히며, 이때 값이 있다면 명시적으로 type 을 변경하여 사용해야 합니다.  
 즉 `Option<T>` 타입이 명시되어 있을때만 값이 있는지 없는지 여부를 신경쓰면 되며, 해당 타입의 값을 다룰 때 `None` 인 경우에 대해 명시적으로 처리해야 합니다.  
 
+# The `match` Control Flow Construct
+
+Rust 에는 `match` 라는 매우 강력한 흐름 제어 구조가 있어 일련의 패턴과 값을 비교한 다음 일치하는 패턴에 따라 코드를 실행 할 수 있습니다.  
+패턴은 리터럴 값, 변수 이름, 와일드카드 등으로 구성될 수 있습니다.  
+
+```rust
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+```
+
+위의 코드에서 `match` 키워드를 사용하여 `coin` 이라는 변수의 값을 패턴과 비교합니다.  
+이는 `if` 를 사용하는 것과 유사해 보이지만 `if`는 boolean 값에 대한 평가만 할 수 있으나 `match`는 패턴을 사용하여 다양한 경우를 처리할 수 있습니다.  
+
+arm 표현식 중 하나가 실행되면 `match` 표현식은 종료되며, `match` 표현식의 결과는 해당 arm 의 결과가 됩니다.  
+arm 표현식이 짧은 경우에는 한 줄에 표현할 수 있지만 긴 경우에는 여러 줄에 걸쳐 표현할 수 있습니다.  
+
+```rust
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => {
+            println!("Lucky penny!");
+            1
+        },
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+```
+
 ---
 
 * [목차로](../../README.md)
