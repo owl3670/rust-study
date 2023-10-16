@@ -199,6 +199,47 @@ fn value_in_cents(coin: Coin) -> u8 {
 }
 ```
 
+## Patterns That Bind to Values
+
+`match` 의 arm 에는 다른 유용한 기능도 있습니다.  
+바로 패턴과 일치하는 값의 일부에 바인딩하여 `enum`에서 값을 추출하는 기능입니다.  
+
+2008년까지 미국에서는 quater 가 주별로 모양이 달랐다는데요 이를 `enum` 으로 표현 해보겠습니다.  
+
+```rust
+#[derive(Debug)] // so we can inspect the state in a minute
+enum UsState {
+    Alabama,
+    Alaska,
+    // --snip--
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+```
+
+`Coin::Quarter` 에 `state` 라는 변수를 추가하여 `Coin::Quater` 가 일치하면 `state` 변수가 상태 값에 바인딩되게 할 수 있습니다.  
+
+```rust
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("State quarter from {:?}!", state);
+            25
+        }
+    }
+}
+```
+
+위의 코드에서와 같이 `state` 에 값이 바인딩되면 arm 표현식에서 해당 값을 사용할 수 있게됩니다.  
+
 ---
 
 * [목차로](../../README.md)
