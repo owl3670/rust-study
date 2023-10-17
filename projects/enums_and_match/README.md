@@ -240,6 +240,22 @@ fn value_in_cents(coin: Coin) -> u8 {
 
 위의 코드에서와 같이 `state` 에 값이 바인딩되면 arm 표현식에서 해당 값을 사용할 수 있게됩니다.  
 
+## Matching with `Option<T>`
+
+`Option<i32>` 를 받아 값이 있으면 그 값에 1을 더하고 없으면 `None` 을 반환하는 함수를 만들어 보겠습니다.  
+`match` 함수 덕분에 매우 간단하게 구현 할 수 있습니다.  
+
+```rust
+fn plus_one(x: Option<i32>){
+    match  { 
+        None => None,
+        Some(i) => Some(i + 1),
+    }
+}
+```
+
+`match` 와 `enum` 을 함께 쓰면서 `enum` 내부 데이터에 변수를 바인딩하여 사용하는 것은 Rust 에서는 매우 자주 있는 일입니다.  
+
 ---
 
 * [목차로](../../README.md)
