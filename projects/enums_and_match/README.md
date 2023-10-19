@@ -256,6 +256,21 @@ fn plus_one(x: Option<i32>){
 
 `match` 와 `enum` 을 함께 쓰면서 `enum` 내부 데이터에 변수를 바인딩하여 사용하는 것은 Rust 에서는 매우 자주 있는 일입니다.  
 
+## Matches Are Exhaustive
+
+`match`의 arm의 패턴은 가능성있는 모든 것을 커버해야 합니다.  
+
+```rust
+    fn plus_one(x: Option<i32>) -> Option<i32> {
+        match x {
+            Some(i) => Some(i + 1),
+        }
+    }
+```
+
+위의 예제에서는 `None`의 경우에 대해 다루지 않습니다.  
+이러한 코드는 버그를 발생시키기 쉬운데 다행히 Rust 에서는 컴파일 에러로 위험을 알려줍니다.  
+
 ---
 
 * [목차로](../../README.md)
