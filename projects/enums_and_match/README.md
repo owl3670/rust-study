@@ -271,6 +271,61 @@ fn plus_one(x: Option<i32>){
 위의 예제에서는 `None`의 경우에 대해 다루지 않습니다.  
 이러한 코드는 버그를 발생시키기 쉬운데 다행히 Rust 에서는 컴파일 에러로 위험을 알려줍니다.  
 
+## Catch-all Patterns and the _ Placeholder
+
+`enum`을 사용하면 몇 가지 특정 값에 대해서는 특별한 동작을 수행하지만 다른 모든 값에 대해서는 하나의 기본 동작을 수행할 수도 있습니다.  
+
+```rust
+    let dice_roll = 9;
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        other => move_player(other),
+    }
+
+    fn add_fancy_hat() {}
+    fn remove_fancy_hat() {}
+    fn move_player(num_spaces: u8) {}
+```
+
+주사위를 굴려 3이나 7이면 특정 동작을 하게 하고 나머지의 경우를 `other` 변수에 바인딩하여 `move_player` 함수를 호출하게 할 수 있습니다.  
+이 코드는 `u8` 타입의 모든 가능한 값을 arm 패턴으로 나열하지 않았음에도 컴파일 됩니다.  
+마지막 패턴이 나열되지 않은 나머지 모든 값과 일피하기 때문입니다.  
+이러한 catch-all arm 은 `match` 에서 마지막 arm 으로 배치되어야 합니다.  
+만약 앞에 배치된다면 다른 arm 보다 먼저 일치하기 때문에 다른 arm 이 실행되지 않습니다.  
+Rust 에서는 이러한 경우 경고를 발생시킵니다.  
+
+만약 catch-all arm 에서 바인딩된 변수를 사용하지 않고 싶다면 `_` 를 사용하여 더 간단하게 표현할 수 있습니다.  
+
+```rust
+    let dice_roll = 9;
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        _ => reroll(),
+    }
+
+    fn add_fancy_hat() {}
+    fn remove_fancy_hat() {}
+    fn reroll() {}
+```
+
+위에서 마지막 arm 다른 모든 값을 명시적으로 무시하고 있습니다.  
+
+만약 값이 3과 7이 아니면 그 어떤 동작도 안하게 하고 싶다면 다음과 같이 표현할 수 있습니다.  
+
+```rust
+    let dice_roll = 9;
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        _ => (),
+    }
+
+    fn add_fancy_hat() {}
+    fn remove_fancy_hat() {}
+```
+
 ---
 
 * [목차로](../../README.md)
