@@ -326,6 +326,18 @@ Rust 에서는 이러한 경우 경고를 발생시킵니다.
     fn remove_fancy_hat() {}
 ```
 
+# Concise Control Flow with `if let`
+
+`if let` 구문은 `if` 와 `let` 을 혼합하여 사용하는 간편한 방식입니다.  
+`if let` 구문을 사용하면 일치하는 하나의 패턴에서만 특정 동작을 수행 하고 나머지는 무시하게 만드는 것을 간편하게 할 수 있습니다.  
+
+```rust
+let config_max = Some(3u8);
+if let Some(max) = config_max {
+    println!("The maximum is configured to be {}", max);
+}
+```
+
 ---
 
 * [목차로](../../README.md)
