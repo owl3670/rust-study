@@ -17,3 +17,4 @@ https://doc.rust-lang.org/book/
 * [Ownership](./projects/ownership)
 * [Structs](./projects/structs)
 * [Enums And Match](./projects/enums_and_match)
+* [Managing Growing Projects with Packages, Crates, and Modules](./projects/managing_growing_projects)
