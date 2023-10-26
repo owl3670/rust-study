@@ -8,6 +8,18 @@ Crates: 라이브러리 또는 실행 파일을 생성하는 모듈 트리
 Modules and use: 조직, 범위 및 개인 정보 경로를 제어할 수 있습니다.  
 Paths: struct, function 또는 module과 같은 항목의 이름 지정 방법  
 
+# Packages and Crates
+
+Crate 는 Rust 컴파일러가 고려하는 최소한의 코드 양입니다. 단일 소스 코드를 실행하더라도 컴파일러는 그 코드를 하나의 crate 로 간주합니다.  
+Crate 는 module 을 포함 할 수 있습니다. module 은 다른 crate 와 함께 컴파일되는 다른 파일에 정의될 수 있습니다.  
+
+Crate 는 라이브러리 crate 또는 binary crate 로 분류됩니다.  
+binary crate 는 실행 파일을 생성하는 crate 입니다. `main` 함수를 항상 포함해야 합니다.  
+
+라이브러리 crate 는 `main` 함수를 가지지 않습니다.  
+라이브러리 crate 는 단독으로 실행할 수 없지만 다른 프로젝트 등에서 공통으로 사용할 수 있는 기능들이 정의 됩니다.
+
+
 ---
 
 * [목차로](../../README.md)
