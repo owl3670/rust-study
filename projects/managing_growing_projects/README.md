@@ -19,6 +19,12 @@ binary crate 는 실행 파일을 생성하는 crate 입니다. `main` 함수를
 라이브러리 crate 는 `main` 함수를 가지지 않습니다.  
 라이브러리 crate 는 단독으로 실행할 수 없지만 다른 프로젝트 등에서 공통으로 사용할 수 있는 기능들이 정의 됩니다.
 
+package 는 하나 이상의 crate 번들입니다.  
+package 는 `Cargo.toml` 파일을 포함하고 있으며 `Cargo.toml` 파일은 crate 들을 어떻게 빌드 할 것인지 설명합니다.  
+Cargo 또한 command-line 도구를 위한 binary crate 를 포함하고 있는 package 입니다.  
+package 에는 binary crate 는 원하는 만큼 포함할 수 있지만 library crate 는 오직 하나만 가능합니다.  
+package 에는 어떤 crate 든 하나 이상이 포함되어야 합니다.  
+
 
 ---
 
