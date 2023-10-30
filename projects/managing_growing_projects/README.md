@@ -89,6 +89,34 @@ pub struct Asparagus {}
 
 `pub struct Asparagus {}` 문장은 컴파일러에게 `Asparagus` struct 를 공개하라고 알려줍니다.
 
+## Grouping Related Code in Modules
+
+module 을 사용하면 가독성을 높이고 쉽게 재사용할 수 있도록 crate 안의 코드를 정리할 수 있습니다. 또한 모듈내의 코드는 기본적으로 비공개이므로 개인 정보를 제어할 수 있습니다.  
+레스토랑을 구현하는 코드를 생각해보겠습니다. 레스토랑은 고객들에게 보여지는 곳을 front of house, 셰프와 요리사, 관리자가 업무를 수행하는 back of house로 구분 할 수 있습니다.  
+이러한 방식으로 crate 를 구성하기 위해 기능을 중첩된 모듈로 구설 할 수 있습니다.  
+`cargo new restaurant --lib` 를 실행하여 `restaurant`이라는 library 를 만들고 sr/lib.rf 에 다음과 같은 모듈과 함수들을 정의해보겠습니다.  
+
+```rust
+mod front_of_house {
+    mod hosting {
+        fn add_to_waitlist() {}
+
+        fn seat_at_table() {}
+    }
+
+    mod serving {
+        fn take_order() {}
+
+        fn serve_order() {}
+
+        fn take_payment() {}
+    }
+}
+```
+
+위와 같이 모듈 내부에 다른 모듈을 배치할 수 있고 crate root 로 부터 모듈 트리를 만들 수 있습니다.  
+이러한 모듈을 사용하면 관련 정의를 함께 그룹화하고 관련 이유를 쉽게 설명할 수 있습니다.  
+
 ---
 
 * [목차로](../../README.md)
