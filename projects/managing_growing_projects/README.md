@@ -115,7 +115,35 @@ mod front_of_house {
 ```
 
 위와 같이 모듈 내부에 다른 모듈을 배치할 수 있고 crate root 로 부터 모듈 트리를 만들 수 있습니다.  
-이러한 모듈을 사용하면 관련 정의를 함께 그룹화하고 관련 이유를 쉽게 설명할 수 있습니다.  
+이러한 모듈을 사용하면 관련 정의를 함께 그룹화하고 관련 이유를 쉽게 설명할 수 있습니다. 
+
+# Paths for Referring to an Item in the Module Tree
+
+Rust 에게 module tree 어디에서 item 을 가져올지 알려주기 위해 filesystem 과 같은 path 를 사용할 수 있습니다.  
+path 는 두 가지 형태를 갖습니다.
+
+- 절대 경로로 crate root 로부터 이어지는 full path 입니다. crate 이름으로 시작하며 현재 crate 로부터 시작되는 code 는 `crate` 로 시작할 수 있습니다.
+- 상대 경로로 현재 모듈로 부터 시작되는 경로입니다. `self`, `super` 혹은 식별자를 사용합니다.
+어떤 형태이든 path 는 `::` 를 사용하여 식별자를 구분합니다.
+
+```rust
+mod front_of_house {
+    mod hosting {
+        fn add_to_waitlist() {}
+    }
+}
+
+pub fn eat_at_restaurant() {
+    // Absolute path
+    crate::front_of_house::hosting::add_to_waitlist();
+
+    // Relative path
+    front_of_house::hosting::add_to_waitlist();
+}
+```
+
+위의 코드는 절대경로와 상대경로로 함수를 호출하는 것을 보여줍니다.  
+실제로는 module 의 item 이 공개상태가 아니기에 실행시 에러가 발생하지만 경로 자체는 유효합니다.  
 
 ---
 
