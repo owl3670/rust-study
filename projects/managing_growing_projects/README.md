@@ -145,6 +145,35 @@ pub fn eat_at_restaurant() {
 위의 코드는 절대경로와 상대경로로 함수를 호출하는 것을 보여줍니다.  
 실제로는 module 의 item 이 공개상태가 아니기에 실행시 에러가 발생하지만 경로 자체는 유효합니다.  
 
+## Exposing Paths with the `pub` Keyword
+
+`pub` 키워드를 사용하여 module 의 item 을 공개할 수 있습니다.  
+이전 예제에서 `hosting` module 의 `add_to_waitlist` 함수를 공개하려면 `pub` 키워드를 사용하여야 합니다.  
+
+```rust
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+pub fn eat_at_restaurant() {
+    // Absolute path
+    crate::front_of_house::hosting::add_to_waitlist();
+
+    // Relative path
+    front_of_house::hosting::add_to_waitlist();
+}
+```
+
+모듈을 공개한다고 해서 모듈 내의 모든 아이템을 공개하는 것은 아니기에 공개할 아이템 앞에 명시적으로 `pub` 키워드를 사용해야 합니다.  
+이러한 보호 규칙은 모듈뿐만 아니라 구조체, 열거형, 함수, 메소드 등에도 적용됩니다.  
+
+위의 코드에서 `front_of_house` module 은 공개되지 않았지만 `eat_at_restaurant` 함수와 같은 모듈에 정의되어 있으므로 `eat_at_restaurant` 함수는 `front_of_house` module 을 참조할 수 있습니다.  
+
+다른 프로젝트에서 코드를 사용할 수 있도록 library crate를 공유하려는 경우 공개 API 로 사용자와 코드가 상호 작용할 수 있는 방법을 결정할 수 있습니다.  
+이러한 API 의 변경 사항을 관리할 때 고려해야 할 사항이 많습니다. 이러한 주제에 관심이 있다면 [The Rust API Guidelines](https://rust-lang.github.io/api-guidelines/) 를 참고하시기 바랍니다.  
+
 ---
 
 * [목차로](../../README.md)
