@@ -174,6 +174,23 @@ pub fn eat_at_restaurant() {
 다른 프로젝트에서 코드를 사용할 수 있도록 library crate를 공유하려는 경우 공개 API 로 사용자와 코드가 상호 작용할 수 있는 방법을 결정할 수 있습니다.  
 이러한 API 의 변경 사항을 관리할 때 고려해야 할 사항이 많습니다. 이러한 주제에 관심이 있다면 [The Rust API Guidelines](https://rust-lang.github.io/api-guidelines/) 를 참고하시기 바랍니다.  
 
+## Starting Relative Paths with `super`
+
+경로의 시작 부분에 `super` 를 사용하여 상위 모듈로 부터 시작하는 상대 경로를 만들 수 있습니다.  
+
+```rust
+fn deliver_order() {}
+
+mod back_of_house {
+    fn fix_incorrect_order() {
+        cook_order();
+        super::deliver_order();
+    }
+
+    fn cook_order() {}
+}
+```
+
 ---
 
 * [목차로](../../README.md)
