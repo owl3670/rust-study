@@ -191,6 +191,65 @@ mod back_of_house {
 }
 ```
 
+## Making Structs and Enums Public
+
+`pub` 키워드를 사용하여 struct 나 enum 을 공개할 수 있습니다.
+
+```rust
+mod back_of_house {
+    pub struct Breakfast {
+        pub toast: String,
+        seasonal_fruit: String,
+    }
+
+    impl Breakfast {
+        pub fn summer(toast: &str) -> Breakfast {
+            Breakfast {
+                toast: String::from(toast),
+                seasonal_fruit: String::from("peaches"),
+            }
+        }
+    }
+}
+
+pub fn eat_at_restaurant() {
+    // Order a breakfast in the summer with Rye toast
+    let mut meal = back_of_house::Breakfast::summer("Rye");
+    // Change our mind about what bread we'd like
+    meal.toast = String::from("Wheat");
+    println!("I'd like {} toast please", meal.toast);
+
+    // The next line won't compile if we uncomment it; we're not allowed
+    // to see or modify the seasonal fruit that comes with the meal
+    // meal.seasonal_fruit = String::from("blueberries");
+}
+```
+
+`toast` field 는 `pub` 키워드가 있어 `eat_at_restaurant` 함수에서 사용할 수 있지만 `seasonal_fruit` field 는 `pub` 키워드가 없기에 `eat_at_restaurant` 함수에서는 사용할 수 없습니다.  
+만약 위의 코드에서 `meal.seasonal_fruit = String::from("blueberries");` 코드의 주석을 풀면 에러가 발생하게 됩니다.  
+
+또하나 살펴봐야 할 점은 `back_of_house::Breakfast::summer` 함수처럼 `pub` 으로 공개 되어 인스턴스를 구성하여 제공하는 함수가 없다면  
+`Breakfast` 에서 private field 가 있기에 `Breakfast` 인스턴스를 생성할 수 없다는 것입니다.  
+
+`enum` 에서 `pub` 키워드를 사용하는 것을 보겠습니다.  
+
+```rust
+mod back_of_house {
+    pub enum Appetizer {
+        Soup,
+        Salad,
+    }
+}
+
+pub fn eat_at_restaurant() {
+        let order1 = back_of_house::Appetizer::Soup;
+        let order2 = back_of_house::Appetizer::Salad;
+    }
+```
+
+`enum` 에서는 그 variant를 사용하지 못한다면 의미가 없습니다.  
+때문에 `enum` 키워드 앞에마 `pub` 키워드를 달아주면 모든 variant를 공개할 수 있습니다.
+
 ---
 
 * [목차로](../../README.md)
