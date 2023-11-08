@@ -250,6 +250,48 @@ pub fn eat_at_restaurant() {
 `enum` 에서는 그 variant를 사용하지 못한다면 의미가 없습니다.  
 때문에 `enum` 키워드 앞에마 `pub` 키워드를 달아주면 모든 variant를 공개할 수 있습니다.
 
+# Bringing Paths into Scope with the use Keyword
+
+함수 호출을 위해 path 들을 적는 것이 너무 반복적이고 불편할 수 있습니다.  
+`use` keyword 를 사용해 이를 간단히 할 수 있습니다.  
+
+```rust
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}
+```
+
+위의 코드에서 `use` 를 사용함으로 `hosting` module 의 `add_to_waitlist` 함수를 호출하는 것이 간단해졌습니다.  
+`use` 를 사용하는 것은 파일 시스템에서 symbolic link 를 만드것과 유사합니다.  
+
+`use` 는 특정 scope 에서만 유효합니다.  
+만약 위의 코드에서 `eat_at_restaurant` 함수의 코드를 별도의 module 의 child 로 만든다면 컴파일 에러가 발생합니다.  
+
+```rust
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+use crate::front_of_house::hosting;
+
+// 모듈로 감쌌기에 use 와 scope 가 분리됩니다.
+mod customer{
+  pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist(); // 컴파일 에러가 발생합니다.
+  }
+}
+```
+
 ---
 
 * [목차로](../../README.md)
