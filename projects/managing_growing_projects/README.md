@@ -292,6 +292,54 @@ mod customer{
 }
 ```
 
+## Creating Idiomatic use Paths
+
+`use` 를 이용해 `add_to_waitlist` 까지 경로를 추가하여 `hosting::add_to_waitlist` 대신 `add_to_waitlist` 만 호출해도 되도록 해보겠습니다.  
+
+```rust
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+use crate::front_of_house::hosting::add_to_waitlist;
+
+pub fn eat_at_restaurant() {
+    add_to_waitlist();
+}
+```
+
+이렇게 함수를 사용하는 것은 편해 보이지만 `add_to_waitlist` 가 정의된 위치가 불분명합니다.  
+함수를 호출할 때 상위 모듈을 지정하면 함수가 로컬에 정의되지 않았음을 명확히 합니다.  
+Rust 에서는 함수의 부모 모듈을 사용 범위로 가져오는 것이 관용적인 방법입니다.  
+
+한편으로 structs, enums, 기타 `use` 항목들은 전체 경로를 지정하는 것이 관용적입니다.  
+
+```rust
+use std::collections::HashMap;
+
+fn main() {
+    let mut map = HashMap::new();
+    map.insert(1, 2);
+}
+```
+
+이러한 관용적인 표현의 예외는 이름이 같은 두 항목을 `use` 로 가져올때인데 이때는 상위 모듈까지만 기재되야 합니다.  
+
+```rust
+use std::fmt;
+use std::io;
+
+fn function1() -> fmt::Result {
+    // --snip--
+}
+
+fn function2() -> io::Result<()> {
+    // --snip--
+}
+```
+
 ---
 
 * [목차로](../../README.md)
