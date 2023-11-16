@@ -340,6 +340,24 @@ fn function2() -> io::Result<()> {
 }
 ```
 
+## Providing new names with the `as` keyword
+
+`as` 키워드를 사용해서 `use` 로 가져온 항목에 별칭을 부여해서 사용 할 수 있습니다.  
+이렇게 한다면 중복되는 이름의 두 항목을 편하게 사용할 수 있습니다.  
+
+```rust
+use std::fmt::Result;
+use std::io::Result as IoResult;
+
+fn function1() -> Result {
+    // --snip--
+}
+
+fn function2() -> IoResult<()> {
+    // --snip--
+}
+```
+
 ---
 
 * [목차로](../../README.md)
