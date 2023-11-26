@@ -358,6 +358,31 @@ fn function2() -> IoResult<()> {
 }
 ```
 
+## Re-exporting Names with `pub use`
+
+`use` 를 사용하여 이름을 scope 안으로 가져올 수 있습니다. 새로운 scope 안에서 이름은 private 이 됩니다.  
+code 가 해당 scope에서 정의된 것처럼 해당 이름을 참조할 수 있도록 하려면 `pub` 키워드와 `use` 키워드를 조합하면 됩니다.  
+이러한 기법을 *re-exporting* 이라고 합니다.  
+
+```rust
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}
+```
+
+위와 같이 변경하기 전에는 위보 코드가 `add_to_waitlist` 함수를 호출하기 위해서는 `restaurant::front_of_house::hosting::add_to_waitlist()` 경로를 사용해야 했습니다.  
+하지만 `pub use` 를 사용하여 `hosting` 을 공개하면 `restaurant::hosting::add_to_waitlist()` 경로를 사용할 수 있습니다.  
+
+*re-exporting* 은 코드를 호출하는 프로그래머가 도메인에 대해 생각하는 방식과 내부 구조가 다를 때 유용합니다.  
+
 ---
 
 * [목차로](../../README.md)
