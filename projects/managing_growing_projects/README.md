@@ -383,6 +383,29 @@ pub fn eat_at_restaurant() {
 
 *re-exporting* 은 코드를 호출하는 프로그래머가 도메인에 대해 생각하는 방식과 내부 구조가 다를 때 유용합니다.  
 
+# Using External Packages
+
+Rust 에서는 외부 package 를 불러와서 사용할 수 있습니다.  
+Chapter 2 에서 guessing game을 위해 `rand` 를 사용하던 것을 떠올려 보겠습니다.  
+
+먼저 `Cargo.toml` 파일에 `rand` 를 추가해야 합니다.  
+
+```toml
+rand = "0.8.5"
+```
+
+dependency 를 추가하여 `rand` package를 download 하고 코드에 `use` 키워드를 사용하여 `rand` 를 사용할 수 있습니다.  
+
+```rust
+use rand::Rng;
+
+fn main() {
+    let secret_number = rand::thread_rng().gen_range(1..101);
+}
+```
+
+[crates.io](https://crates.io/) 에서 사용가능한 많은 package를 확인할 수 있습니다.  
+
 ---
 
 * [목차로](../../README.md)
