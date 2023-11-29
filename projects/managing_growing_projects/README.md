@@ -383,7 +383,7 @@ pub fn eat_at_restaurant() {
 
 *re-exporting* 은 코드를 호출하는 프로그래머가 도메인에 대해 생각하는 방식과 내부 구조가 다를 때 유용합니다.  
 
-# Using External Packages
+## Using External Packages
 
 Rust 에서는 외부 package 를 불러와서 사용할 수 있습니다.  
 Chapter 2 에서 guessing game을 위해 `rand` 를 사용하던 것을 떠올려 보겠습니다.  
@@ -405,6 +405,37 @@ fn main() {
 ```
 
 [crates.io](https://crates.io/) 에서 사용가능한 많은 package를 확인할 수 있습니다.  
+
+## Using Nested Paths to Clean Up Large `use` Lists
+
+동일한 crate 또는 동일한 module 에 정의된 여러 항목을 사용하는 경우 중첩 경로를 사용하여 한 줄로 표현할 수 있습니다.
+
+```rust
+// --snip--
+use std::cmp::Ordering;
+use std::io;
+// --snip--
+```
+
+위의 코드에서 `std` 가 중첩 되는데 이를 아래와 같이 표현 할 수 있습니다.
+
+```rust
+// --snip--
+use std::{cmp::Ordering, io};
+// --snip--
+```
+
+```rust
+use std::io;
+use std::io::Write;
+```
+
+위의 코드에서는 `std::io` 가 중첩 됩니다.  
+여기서는 `self`를 사용해 두개의 참조 경로를 중첩 경로로 표현 할 수 있습니다.  
+
+```rust
+use std::io::{self, Write};
+```
 
 ---
 
