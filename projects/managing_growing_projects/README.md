@@ -437,6 +437,14 @@ use std::io::Write;
 use std::io::{self, Write};
 ```
 
+## The Glob Operator
+
+path 에 정의된 모든 public 항목을 불러오고 싶다면 `*` blob 연산자를 사용할 수 있습니다.  
+
+```rust
+use std::collections::*;
+```
+
 ---
 
 * [목차로](../../README.md)
