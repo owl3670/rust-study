@@ -445,6 +445,34 @@ path 에 정의된 모든 public 항목을 불러오고 싶다면 `*` blob 연�
 use std::collections::*;
 ```
 
+# Separating Modules into Different Files
+
+지금까지 하나의 파일안에 여러 module 들을 정의하는 예제를 확인했습니다.  
+module 이 점점 커지면 코드를 더 쉽게 탐색할 수 있도록 해당 module의 정의를 별도의 파일로 옮기는 것이 좋습니다.  
+
+Filename: src/lib.rs
+```rust
+mod front_of_house;
+
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+  hosting::add_to_waitlist();
+}
+```
+
+Filename: src/front_of_house.rs
+```rust
+pub mod hosting;
+```
+
+Filename: src/front_of_house/hosting.rs
+```rust
+pub fn add_to_waitlist() {}
+```
+
+위의 예시와 같이 디렉토리 및 파일을 구성하고 컴파일 한다면 컴파일러가 각 파일이 프로젝트의 일부라는 것을 알고 각 파일의 코드를 참조하게 됩니다.
+
 ---
 
 * [목차로](../../README.md)
