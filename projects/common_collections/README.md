@@ -18,6 +18,21 @@
     let v = vec![1, 2, 3];
 ```
 
+## Updating a Vector
+
+벡터에 값을 추가하고 싶으면 `push` 메소드를 사용할 수 있습니다.  
+
+```rust
+    let mut v = Vec::new();
+
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
+```
+
+
+
 ---
 
 * [목차로](../../README.md)
