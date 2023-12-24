@@ -31,7 +31,38 @@
     v.push(8);
 ```
 
+## Reading Elements of Vectors
 
+vector 에 저장된 값을 참조하기 위해서는 두 가지 방법이 있습니다.  
+하나는 `get` 메소드를 사용하는 것이고 다른 하나는 `&` 와 `[]` 를 사용하는 것입니다.  
+
+```rust
+    let v = vec![1, 2, 3, 4, 5];
+
+    let third: &i32 = &v[2];
+    println!("The third element is {third}");
+
+    let third: Option<&i32> = v.get(2);
+    match third {
+        Some(third) => println!("The third element is {third}"),
+        None => println!("There is no third element."),
+    }
+```
+
+Rust 에서 `[]` 를 통해서 없는 요소에 접근할 때는 panic 이 발생하지만 `get` 메소드를 사용할 때는 panic 이 발생하지 않습니다.  
+`get` 메소드를 사용할 때는 `Option<&T>` 이 리턴 됩니다.  
+
+vector 에서 요소에 대한 immutable 참조가 있을 때 vector 에 요소를 추가하려고 하면 컴파일 에러가 발생합니다.  
+
+```rust
+    let mut v = vec![1, 2, 3, 4, 5];
+
+    let first = &v[0];
+
+    v.push(6); // Error!
+
+    println!("The first element is: {}", first);
+```
 
 ---
 
