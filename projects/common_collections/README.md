@@ -64,6 +64,26 @@ vector 에서 요소에 대한 immutable 참조가 있을 때 vector 에 요소�
     println!("The first element is: {}", first);
 ```
 
+## Iterating over the Values in a Vector
+
+vector 의 요소를 순회하기 위해서는 `for` 를 사용할 수 있습니다.  
+
+```rust
+    let v = vec![100, 32, 57];
+    for i in &v {
+        println!("{}", i);
+    }
+```
+
+vector 의 요소를 mutable 하게 순회하기 위해서는 `for` 와 `mut` 을 사용할 수 있습니다.  
+
+```rust
+    let mut v = vec![100, 32, 57];
+    for i in &mut v {
+        *i += 50;
+    }
+```
+
 ---
 
 * [목차로](../../README.md)
