@@ -84,6 +84,25 @@ vector 의 요소를 mutable 하게 순회하기 위해서는 `for` 와 `mut` �
     }
 ```
 
+## Using an Enum to Store Multiple Types
+
+vector 는 하나의 type 의 값만 저장할 수 있습니다.
+하지만 enum 을 사용하면 vector 에 여러 type 의 값들을 저장할 수 있습니다.
+
+```rust
+    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from("blue")),
+        SpreadsheetCell::Float(10.12),
+    ];
+```
+
 ---
 
 * [목차로](../../README.md)
