@@ -103,6 +103,18 @@ vector 는 하나의 type 의 값만 저장할 수 있습니다.
     ];
 ```
 
+## Dropping a Vector Drops Its Elements
+
+`struct` 와 같이 vector 는 scope 밖으로 벗어나면 drop 됩니다.
+
+```rust
+    {
+        let v = vec![1, 2, 3, 4];
+
+        // do stuff with v
+    } // <- v goes out of scope and is freed here
+```
+
 ---
 
 * [목차로](../../README.md)
