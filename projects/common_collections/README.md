@@ -115,6 +115,11 @@ vector 는 하나의 type 의 값만 저장할 수 있습니다.
     } // <- v goes out of scope and is freed here
 ```
 
+# Storing UTF-8 Encoded Text with Strings
+
+문자열은 바이트의 모음으로 구현되기 때문에 컬렉션의 맥락에서 설명합니다.  
+이 섹션에서는 모든 컬렉션 유형에 있는 `String`에 대한 작업에 대해 설명합니다.
+
 ---
 
 * [목차로](../../README.md)
