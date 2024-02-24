@@ -127,6 +127,35 @@ Rust 코어에는 `str` 이라는 문자열 슬라이스가 유일한 문자열 
 `String` 타입은 핵심 언어 기능에 있는 것이 아닌 Rust 의 표준 라이브러리를 통해 제공됩니다.  
 이는 UTF-8 로 인코딩된 문자열 타입입니다. Rust 에서 문자열을 말할때는 `String` 과 `&str` 을 모두 말하는 것입니다.  
 
+## Creating a New String
+
+`Vec<T>` 에서 가능한 많은 연산자가 `String` 에도 적용됩니다.  
+`String`은 실제로 bytes vextor의 wrapper 이기 때문입니다.  
+`String` 을 생성하는 방법은 다음과 같습니다.
+
+```rust
+    let mut s = String::new();
+```
+
+위에서 `s` 라는 빈 `string`을 생성합니다.  
+이 `string`에 데이터를 넣을 수 있습니다.  
+
+종종 `string`에 초기 데이터가 있을 수 있습니다.  
+이를 위해 `string` 리터럴처럼 `Display` 특성을 구현하는 모든 유형에서 사용할 수 있는 `to_string` 메소드를 사용합니다.  
+
+```rust
+    let data = "initial contents";
+    let s = data.to_string();
+    // the method also works on a literal directly:
+    let s = "initial contents".to_string();
+```
+
+또는 `String::from` 함수를 사용할 수 있습니다.
+
+```rust
+    let s = String::from("initial contents");
+```
+
 ---
 
 * [목차로](../../README.md)
