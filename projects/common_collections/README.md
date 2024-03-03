@@ -156,6 +156,11 @@ Rust 코어에는 `str` 이라는 문자열 슬라이스가 유일한 문자열 
     let s = String::from("initial contents");
 ```
 
+## Updating a String
+
+`String` 은 `Vec<T>` 와 같이 사이즈가 증가 할 수 있고 내용도 바뀔 수 있습니다.  
+또한  `+` 연산자, `format!` 매크로 등을 이용해 `String` 값 을 연결할 수 있습니다.  
+
 ---
 
 * [목차로](../../README.md)
