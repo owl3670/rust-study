@@ -161,6 +161,33 @@ Rust 코어에는 `str` 이라는 문자열 슬라이스가 유일한 문자열 
 `String` 은 `Vec<T>` 와 같이 사이즈가 증가 할 수 있고 내용도 바뀔 수 있습니다.  
 또한  `+` 연산자, `format!` 매크로 등을 이용해 `String` 값 을 연결할 수 있습니다.  
 
+### Appending to a String with `push_str` and `push`  
+
+`push_str` 메소드를 사용하여 `String` 에 문자열을 추가할 수 있습니다.  
+
+```rust
+    let mut s = String::from("foo");
+    s.push_str("bar");
+```
+
+`push_str` 메소드를 사용하여 string slice 를 추가할 수 있습니다.  
+이는 parameter의 ownership 을 가져올 필요가 없기 때문입니다.  
+다음의 코드는 ownership 을 가져오지 않기 때문에 `s2` 를 사용할 수 있습니다.  
+    
+```rust
+    let mut s = String::from("foo");
+    let s2 = "bar";
+    s.push_str(s2);
+    println!("s2 is {}", s2);
+```
+
+`push` 메소드를 사용하여 `char` 값을 추가할 수 있습니다.  
+
+```rust
+    let mut s = String::from("lo");
+    s.push('l');
+```
+
 ---
 
 * [목차로](../../README.md)
